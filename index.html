@@ -531,7 +531,7 @@ async function fetchCandles() {
       String(etNow.getDate()).padStart(2,'0');
 
     // Add month parameter to force current month + extended_hours=false for clean trading hours only
-    const url = `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=TSLA&interval=5min&outputsize=full&month=${monthStr}&extended_hours=false&entitlement=realtime&apikey=${API_KEY}`;
+    const url = `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=TSLA&interval=5min&outputsize=full&entitlement=realtime&apikey=${API_KEY}`;
     const r = await fetch(url);
     const d = await r.json();
     callsToday++; saveCallCount(); updateCallsDisplay();
