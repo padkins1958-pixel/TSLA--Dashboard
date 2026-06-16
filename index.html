@@ -441,10 +441,9 @@ function launch(initialData) {
   scheduleNext(5 * 60);
 
   // Lightweight timers that don't use API calls
-  setInterval(simTick, 3000);        // simulate candle movement between fetches
   setInterval(updateCountdown, 1000); // countdown timer display
-  setInterval(checkSpike, 5000);     // spike window monitor
-  setInterval(updateClock, 1000);    // ET clock
+  setInterval(checkSpike, 5000);      // spike window monitor
+  setInterval(updateClock, 1000);     // ET clock
   updateClock();
   updateCallsDisplay();
 }
@@ -573,14 +572,21 @@ async function fetchCandles() {
 
       if (todayCandles.length > 0) {
         candles = todayCandles;
-        // Update live price from latest candle
+        // Always use the most recent candle close as live price
         const latest = todayCandles[todayCandles.length-1];
         livePrice = latest.close;
+        // Update header price from candle data
+        const oldest = todayCandles[0];
+        const dayHigh = Math.max(...todayCandles.map(c=>c.high));
+        const dayLow  = Math.min(...todayCandles.map(c=>c.low));
+        const chg = latest.close - (prevClose||oldest.open);
+        const pct = prevClose ? (chg/prevClose*100) : 0;
+        setHeader(livePrice, chg, pct, dayHigh, dayLow, prevClose);
+        setMode('● LIVE · ' + nowStr(), 'var(--green)');
         calcSignal();
         drawChart();
         updateGlance();
         checkPaper();
-        setMode('● LIVE · ' + nowStr(), 'var(--green)');
       }
     }
   } catch(e) { console.warn('Candles error:', e); }
