@@ -532,29 +532,43 @@ async function fetchCandles() {
     if (d['Note']||d['Information']) { setMode('⚠ RATE LIMIT — WAIT', 'var(--orange)'); return; }
     const ts = d['Time Series (5min)'];
     if (ts) {
-      // Get today's date in ET timezone correctly
       const etNow = new Date(new Date().toLocaleString('en-US', {timeZone:'America/New_York'}));
-      const todayStr = etNow.getFullYear() + '-' + String(etNow.getMonth()+1).padStart(2,'0') + '-' + String(etNow.getDate()).padStart(2,'0');
+      const day = etNow.getDay();
+      const isWeekday = day >= 1 && day <= 5;
 
       const allCandles = Object.entries(ts)
         .sort(([a],[b]) => new Date(a)-new Date(b))
-        .map(([t,v]) => ({
-          time:   new Date(t).getTime(),
-          open:   parseFloat(v['1. open']),
-          high:   parseFloat(v['2. high']),
-          low:    parseFloat(v['3. low']),
-          close:  parseFloat(v['4. close']),
-          volume: parseInt(v['5. volume']),
-          dateStr: t.split(' ')[0]
-        }));
+        .map(([t,v]) => {
+          const candleET = new Date(new Date(t + ' EST').toLocaleString('en-US', {timeZone:'America/New_York'}));
+          const candleDay = candleET.getDay();
+          const candleHour = candleET.getHours();
+          const candleMin = candleET.getMinutes();
+          const candleMins = candleHour * 60 + candleMin;
+          return {
+            time:      new Date(t).getTime(),
+            open:      parseFloat(v['1. open']),
+            high:      parseFloat(v['2. high']),
+            low:       parseFloat(v['3. low']),
+            close:     parseFloat(v['4. close']),
+            volume:    parseInt(v['5. volume']),
+            dateStr:   t.split(' ')[0],
+            isValid:   candleDay >= 1 && candleDay <= 5 && candleMins >= 420 && candleMins < 960
+          };
+        });
 
-      // Filter to today's candles first
-      let todayCandles = allCandles.filter(c => c.dateStr === todayStr);
+      // Get today's date string from ET
+      const todayStr = etNow.getFullYear() + '-' +
+        String(etNow.getMonth()+1).padStart(2,'0') + '-' +
+        String(etNow.getDate()).padStart(2,'0');
 
-      // If no today candles yet (pre-market or data lag) use most recent available day
-      if (todayCandles.length === 0) {
-        const mostRecentDate = allCandles[allCandles.length-1]?.dateStr;
-        todayCandles = allCandles.filter(c => c.dateStr === mostRecentDate);
+      // Filter to today's valid trading candles only (7 AM - 4 PM ET weekdays)
+      let todayCandles = allCandles.filter(c => c.dateStr === todayStr && c.isValid);
+
+      // If before 7 AM or no candles yet — use most recent valid trading day
+      if (todayCandles.length < 3) {
+        const validDays = [...new Set(allCandles.filter(c => c.isValid).map(c => c.dateStr))].sort();
+        const mostRecentDay = validDays[validDays.length - 1];
+        todayCandles = allCandles.filter(c => c.dateStr === mostRecentDay && c.isValid);
       }
 
       if (todayCandles.length > 0) {
