@@ -524,8 +524,15 @@ async function fetchQuote() {
 async function fetchCandles() {
   if (!API_KEY) return;
   try {
-    // Use full outputsize to get more data, then filter to today only
-    const r = await fetch(`https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=TSLA&interval=5min&outputsize=full&apikey=${API_KEY}`);
+    const etNow = new Date(new Date().toLocaleString('en-US', {timeZone:'America/New_York'}));
+    const monthStr = etNow.getFullYear() + '-' + String(etNow.getMonth()+1).padStart(2,'0');
+    const todayStr = etNow.getFullYear() + '-' +
+      String(etNow.getMonth()+1).padStart(2,'0') + '-' +
+      String(etNow.getDate()).padStart(2,'0');
+
+    // Add month parameter to force current month + extended_hours=false for clean trading hours only
+    const url = `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=TSLA&interval=5min&outputsize=full&month=${monthStr}&extended_hours=false&apikey=${API_KEY}`;
+    const r = await fetch(url);
     const d = await r.json();
     callsToday++; saveCallCount(); updateCallsDisplay();
     if (d['Note']||d['Information']) { setMode('⚠ RATE LIMIT — WAIT', 'var(--orange)'); return; }
