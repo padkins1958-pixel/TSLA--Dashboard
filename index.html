@@ -534,7 +534,7 @@ async function fetchCandles() {
     if (ts) {
       // Get today's date in ET timezone correctly
       const etNow = new Date(new Date().toLocaleString('en-US', {timeZone:'America/New_York'}));
-      const todayStr = `${etNow.getFullYear()}-${String(etNow.getMonth()+1).padStart(2,'0')}-${String(etNow.getDate()).padStart(2,'0')}`;
+      const todayStr = etNow.getFullYear() + '-' + String(etNow.getMonth()+1).padStart(2,'0') + '-' + String(etNow.getDate()).padStart(2,'0');
 
       const allCandles = Object.entries(ts)
         .sort(([a],[b]) => new Date(a)-new Date(b))
