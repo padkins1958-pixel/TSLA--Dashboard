@@ -145,16 +145,28 @@ body{background:var(--bg);color:var(--text);font-family:'SF Mono','Fira Code',mo
       <div class="stat"><span class="lbl">LOW</span><span class="val" id="h-low" style="color:var(--red)">—</span></div>
       <div class="stat"><span class="lbl">PREV</span><span class="val" id="h-prev" style="color:var(--muted)">—</span></div>
       <div class="stat"><span class="lbl">MARKET</span><span class="val" id="h-mkt">—</span></div>
-      <div id="ytd-badge" style="border-color:var(--muted);background:rgba(107,114,128,0.1);">
+      <div id="ytd-badge" style="border-color:var(--muted);background:rgba(107,114,128,0.1);padding:4px 10px;border-radius:10px;border:1px solid;text-align:center;min-width:70px;">
         <div style="color:var(--muted);font-size:8px;font-weight:700;letter-spacing:1px;">YTD P&L</div>
+        <div style="color:var(--muted);font-size:7px;margin-bottom:2px;">Dashboard Trades</div>
         <div id="ytd-amount" style="font-size:14px;font-weight:900;color:var(--muted);">$0</div>
         <div id="ytd-count" style="font-size:8px;color:var(--muted);">0 trades</div>
+      </div>
+      <div id="instinct-ytd-badge" style="padding:4px 10px;border-radius:10px;border:1px solid var(--muted);background:rgba(107,114,128,0.1);text-align:center;min-width:70px;">
+        <div style="color:var(--muted);font-size:8px;font-weight:700;letter-spacing:1px;">YTD P&L</div>
+        <div style="color:var(--muted);font-size:7px;margin-bottom:2px;">Instinct Trades</div>
+        <div id="instinct-ytd-amount" style="font-size:14px;font-weight:900;color:var(--muted);">$0</div>
+        <div id="instinct-ytd-count" style="font-size:8px;color:var(--muted);">0 trades</div>
+      </div>
+      <div id="winrate-badge" style="padding:4px 10px;border-radius:10px;border:1px solid var(--muted);background:rgba(107,114,128,0.1);text-align:center;min-width:70px;">
+        <div style="color:var(--muted);font-size:8px;font-weight:700;letter-spacing:1px;">WIN RATE</div>
+        <div id="winrate-pct" style="font-size:14px;font-weight:900;color:var(--muted);">—</div>
+        <div id="winrate-record" style="font-size:8px;color:var(--muted);">0W / 0L</div>
       </div>
       <div style="display:flex;flex-direction:column;gap:4px;">
         <div class="mode-badge" id="h-mode" style="border-color:var(--orange);color:var(--orange);background:rgba(251,146,60,0.1);text-align:center;">◌ CONNECTING</div>
         <div id="countdown" style="padding:3px 8px;border-radius:14px;font-size:9px;font-weight:700;border:1px solid var(--blue);color:var(--blue);background:rgba(56,189,248,0.12);text-align:center;letter-spacing:0.5px;">Outside trading hours</div>
-        <div id="manual-counter" style="padding:3px 8px;border-radius:14px;font-size:9px;font-weight:700;border:1px solid var(--green);color:var(--green);background:rgba(0,229,160,0.12);text-align:center;letter-spacing:0.5px;">Manual: 9 left</div>
-        <div id="api-calls-left" style="padding:3px 8px;border-radius:14px;font-size:9px;font-weight:700;border:1px solid var(--muted);color:var(--muted);background:rgba(107,114,128,0.1);text-align:center;letter-spacing:0.5px;">API: 0/150</div>
+        <div id="manual-counter" style="padding:3px 8px;border-radius:14px;font-size:9px;font-weight:700;border:1px solid var(--green);color:var(--green);background:rgba(0,229,160,0.12);text-align:center;letter-spacing:0.5px;">Manual: 18 left</div>
+        <div id="api-calls-left" style="padding:3px 8px;border-radius:14px;font-size:9px;font-weight:700;border:1px solid var(--muted);color:var(--muted);background:rgba(107,114,128,0.1);text-align:center;letter-spacing:0.5px;">API: 0/300</div>
       </div>
       <button class="fetch-btn" id="fetch-btn" onclick="manualFetch()">↻ Refresh (9)</button>
     </div>
@@ -197,6 +209,10 @@ body{background:var(--bg);color:var(--text);font-family:'SF Mono','Fira Code',mo
     <div id="no-signal-box" class="card" style="text-align:center;color:var(--muted);padding:14px;">
       ⏳ No trade setup — wait for 3/4 or 4/4 signal
     </div>
+
+    <!-- Instinct Trade Card — always visible -->
+    <div id="instinct-card"></div>
+
     <p class="disclaimer">⚠️ EDUCATIONAL USE ONLY. Not financial advice. Options carry substantial risk.</p>
   </div>
 
@@ -324,12 +340,17 @@ let lastAutoPaper = 0;
 let fetchTimer = null;
 let countdownInterval = null;
 let countdownSecs = 0;
-let manualRefreshesLeft = 9;
+let manualRefreshesLeft = 18;
 
 // Trade states (3-state system)
 let tradeStates = {};
 let ytdTrades = [];
 let ytdPnl = 0;
+
+// Instinct trade state
+let instinctState = {};
+let instinctTrades = [];
+let instinctPnl = 0;
 
 // ═══════════════════════════════════════════
 // STORAGE
@@ -339,7 +360,10 @@ function loadStorage() {
   try { spikeLog    = JSON.parse(localStorage.getItem('tsla_spikes')||'[]'); } catch(e){}
   try { tradeStates = JSON.parse(localStorage.getItem('tsla_trade_states')||'{}'); } catch(e){}
   try { ytdTrades   = JSON.parse(localStorage.getItem('tsla_ytd_trades')||'[]'); } catch(e){}
-  ytdPnl = ytdTrades.reduce((s,t)=>s+(t.pnl||0), 0);
+  try { instinctState  = JSON.parse(localStorage.getItem('tsla_instinct_state')||'{}'); } catch(e){}
+  try { instinctTrades = JSON.parse(localStorage.getItem('tsla_instinct_trades')||'[]'); } catch(e){}
+  ytdPnl      = ytdTrades.reduce((s,t)=>s+(t.pnl||0), 0);
+  instinctPnl = instinctTrades.reduce((s,t)=>s+(t.pnl||0), 0);
   try {
     const saved = JSON.parse(localStorage.getItem('tsla_calls')||'{}');
     if (saved.date === new Date().toDateString()) callsToday = saved.count||0;
@@ -348,9 +372,9 @@ function loadStorage() {
   try {
     const md = localStorage.getItem('tsla_manual_date');
     if (md === new Date().toDateString()) {
-      manualRefreshesLeft = parseInt(localStorage.getItem('tsla_manual_left')||'9');
+      manualRefreshesLeft = parseInt(localStorage.getItem('tsla_manual_left')||'18');
     } else {
-      manualRefreshesLeft = 9;
+      manualRefreshesLeft = 18;
       localStorage.setItem('tsla_manual_date', new Date().toDateString());
       localStorage.setItem('tsla_manual_left', '9');
     }
@@ -363,8 +387,10 @@ function saveCallCount() {
 
 function saveTradeData() {
   try {
-    localStorage.setItem('tsla_trade_states', JSON.stringify(tradeStates));
-    localStorage.setItem('tsla_ytd_trades',   JSON.stringify(ytdTrades));
+    localStorage.setItem('tsla_trade_states',    JSON.stringify(tradeStates));
+    localStorage.setItem('tsla_ytd_trades',      JSON.stringify(ytdTrades));
+    localStorage.setItem('tsla_instinct_state',  JSON.stringify(instinctState));
+    localStorage.setItem('tsla_instinct_trades', JSON.stringify(instinctTrades));
   } catch(e){}
 }
 
@@ -425,6 +451,9 @@ function init(initialData) {
   renderSpikeLog();
   renderPaperLog();
   updateYTD();
+  updateWinRate();
+  updateInstinctYTD();
+  renderInstinctCard();
   updateManualCounter();
   updateCallsDisplay();
 
@@ -509,7 +538,7 @@ function updateManualCounter() {
 
 function updateCallsDisplay() {
   const el = document.getElementById('api-calls-left');
-  if (el) el.textContent = 'API: '+callsToday+'/150';
+  if (el) el.textContent = 'API: '+callsToday+'/300';
 }
 
 // ═══════════════════════════════════════════
@@ -704,6 +733,29 @@ function updateYTD() {
   cnt.textContent  = ytdTrades.length+' trade'+(ytdTrades.length!==1?'s':'');
 }
 
+function updateWinRate() {
+  const badge = document.getElementById('winrate-badge');
+  const pct   = document.getElementById('winrate-pct');
+  const rec   = document.getElementById('winrate-record');
+  if (!badge||!pct||!rec) return;
+  const allTrades = [...ytdTrades, ...instinctTrades];
+  const total = allTrades.length;
+  const wins  = allTrades.filter(t=>t.pnl>=0).length;
+  const losses= total-wins;
+  if (total===0) {
+    pct.textContent='—'; rec.textContent='0W / 0L';
+    badge.style.borderColor='var(--muted)';
+    badge.style.background='rgba(107,114,128,0.1)';
+    pct.style.color='var(--muted)'; return;
+  }
+  const rate = Math.round(wins/total*100);
+  const col  = rate>=76?'var(--green)':rate>=51?'var(--yellow)':'var(--red)';
+  const bg   = rate>=76?'rgba(0,229,160,0.1)':rate>=51?'rgba(245,197,24,0.1)':'rgba(255,61,90,0.1)';
+  badge.style.borderColor=col; badge.style.background=bg;
+  pct.textContent=rate+'%'; pct.style.color=col;
+  rec.textContent=wins+'W / '+losses+'L'; rec.style.color='var(--muted)';
+}
+
 // ═══════════════════════════════════════════
 // TRADE STATES (3-STATE CARDS)
 // ═══════════════════════════════════════════
@@ -737,12 +789,161 @@ function sellTrade(key) {
   saveTradeData();
   updateGlance();
   updateYTD();
+  updateWinRate();
 }
 
 function clearTrade(key) {
   delete tradeStates[key];
   saveTradeData();
   updateGlance();
+}
+
+// ── Instinct Trade Functions ──────────────────────────
+function enterInstinct() {
+  const strike = prompt('What strike price did you buy?\n(example: 405)');
+  if (!strike) return;
+  const price = parseFloat(prompt('What did you pay per contract on Robinhood?\n(example: 4.07)'));
+  if (!price||price<=0) return;
+  instinctState = {
+    state:      'in',
+    strike:     parseFloat(strike),
+    entryPrice: price,
+    entryStock: livePrice,
+    entryTime:  new Date().toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit'}),
+    entryDate:  new Date().toLocaleDateString('en-US',{month:'short',day:'numeric'})
+  };
+  saveTradeData();
+  renderInstinctCard();
+}
+
+function sellInstinct() {
+  const price = parseFloat(prompt('What did you sell for per contract on Robinhood?\n(example: 4.35)'));
+  if (!price||price<=0) return;
+  const t = instinctState;
+  const pnl = +((price-t.entryPrice)*100).toFixed(0);
+  const pct = +((price-t.entryPrice)/t.entryPrice*100).toFixed(1);
+  instinctState = {...t,state:'closed',exitPrice:price,exitTime:new Date().toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit'}),pnl,pct};
+  instinctTrades.push({date:new Date().toLocaleDateString(),strike:t.strike,entryPrice:t.entryPrice,exitPrice:price,pnl,pct});
+  instinctPnl = instinctTrades.reduce((s,t)=>s+(t.pnl||0),0);
+  saveTradeData();
+  renderInstinctCard();
+  updateInstinctYTD();
+  updateWinRate();
+}
+
+function clearInstinct() {
+  instinctState = {};
+  saveTradeData();
+  renderInstinctCard();
+}
+
+function updateInstinctYTD() {
+  const badge = document.getElementById('instinct-ytd-badge');
+  const amt   = document.getElementById('instinct-ytd-amount');
+  const cnt   = document.getElementById('instinct-ytd-count');
+  if (!badge||!amt||!cnt) return;
+  const col = instinctPnl>0?'var(--purple)':instinctPnl<0?'var(--red)':'var(--muted)';
+  const bg  = instinctPnl>0?'rgba(167,139,250,0.1)':instinctPnl<0?'rgba(255,61,90,0.1)':'rgba(107,114,128,0.1)';
+  badge.style.borderColor = col;
+  badge.style.background  = bg;
+  amt.textContent = (instinctPnl>=0?'+':'')+'$'+instinctPnl;
+  amt.style.color = col;
+  cnt.textContent = instinctTrades.length+' trade'+(instinctTrades.length!==1?'s':'');
+}
+
+function renderInstinctCard() {
+  const el = document.getElementById('instinct-card');
+  if (!el) return;
+  const ts = instinctState;
+
+  // No position
+  if (!ts||!ts.state||ts.state==='idle') {
+    el.innerHTML = `
+    <div style="background:rgba(167,139,250,0.06);border:2px solid rgba(167,139,250,0.4);border-radius:12px;padding:14px;">
+      <div style="font-size:9px;font-weight:800;letter-spacing:1.5px;color:var(--purple);margin-bottom:4px;">⚡ INSTINCT TRADE</div>
+      <div style="color:var(--muted);font-size:10px;margin-bottom:10px;">Your gut says buy — record it here and track it against the dashboard signals.</div>
+      <button class="action-btn" onclick="enterInstinct()" style="background:var(--purple);color:#000;">
+        ⚡ INSTINCT — I'M IN
+      </button>
+    </div>`;
+    return;
+  }
+
+  // In trade
+  if (ts.state==='in') {
+    const cur   = livePrice&&ts.entryStock?+(ts.entryPrice+(livePrice-ts.entryStock)*0.4).toFixed(2):null;
+    const pnlD  = cur?+((cur-ts.entryPrice)*100).toFixed(0):null;
+    const pnlP  = cur?+((cur-ts.entryPrice)/ts.entryPrice*100).toFixed(1):null;
+    const pCol  = pnlD>=0?'var(--green)':'var(--red)';
+    const rec   = getTradeRec(ts.entryPrice,ts.entryStock);
+    const cardBg= pnlD>0?'rgba(167,139,250,0.08)':pnlD<0?'rgba(255,61,90,0.06)':'rgba(167,139,250,0.06)';
+    el.innerHTML = `
+    <div style="background:${cardBg};border:2px solid var(--purple);border-radius:12px;padding:14px;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+        <div>
+          <div style="font-size:9px;font-weight:800;letter-spacing:1.5px;color:var(--purple);">⚡ INSTINCT TRADE · IN</div>
+          <div style="font-size:17px;font-weight:900;">TSLA $${ts.strike}C</div>
+          <div style="color:var(--muted);font-size:9px;">Entered ${ts.entryTime} · Paid <b style="color:var(--text);">$${ts.entryPrice}</b>/contract</div>
+        </div>
+        <div style="text-align:center;">
+          <div style="color:var(--muted);font-size:8px;margin-bottom:2px;">LIVE P&L</div>
+          <div style="font-size:24px;font-weight:900;color:${pCol};">${pnlP!==null?(pnlP>=0?'+':'')+pnlP+'%':'—'}</div>
+          <div style="font-size:13px;font-weight:700;color:${pCol};">${pnlD!==null?(pnlD>=0?'+':'')+'$'+pnlD:''}</div>
+        </div>
+      </div>
+      <div style="background:var(--surface);border-radius:8px;padding:8px;margin-bottom:8px;">
+        <div style="font-size:8px;color:var(--muted);margin-bottom:5px;letter-spacing:1px;">PROFIT LEVELS</div>
+        <div style="display:flex;gap:4px;">
+          ${[25,50,75,100].map((lvlPct,li)=>{
+            const cols=['var(--yellow)','var(--orange)','var(--green)','var(--green)'];
+            const hit=pnlP!==null&&pnlP>=lvlPct;
+            return '<div style="flex:1;text-align:center;background:'+(hit?cols[li]+'30':'var(--panel)')+';border:1px solid '+(hit?cols[li]:'var(--border)')+';border-radius:6px;padding:5px 2px;"><div style="font-size:8px;font-weight:700;color:'+(hit?cols[li]:'var(--muted)')+';">'+lvlPct+'%</div><div style="font-size:10px;">'+(hit?'✓':'○')+'</div></div>';
+          }).join('')}
+        </div>
+      </div>
+      <div style="background:${rec.col}18;border:2px solid ${rec.col};border-radius:10px;padding:11px;margin-bottom:8px;text-align:center;">
+        <div style="font-size:15px;font-weight:900;color:${rec.col};">${rec.action}</div>
+        <div style="font-size:9px;color:var(--muted);margin-top:2px;">${rec.reason}</div>
+      </div>
+      <div class="grid3" style="margin-bottom:10px;">
+        <div class="cell"><div class="lbl">Paid</div><div class="val" style="font-size:12px;">$${ts.entryPrice}</div></div>
+        <div class="cell"><div class="lbl">Est. Now</div><div class="val" style="color:${pCol};font-size:12px;">${cur?'$'+cur:'—'}</div></div>
+        <div class="cell"><div class="lbl">Stock In</div><div class="val" style="font-size:12px;">$${ts.entryStock?.toFixed(2)||'—'}</div></div>
+      </div>
+      <button class="action-btn" onclick="sellInstinct()" style="background:var(--orange);color:#000;">
+        💰 I SOLD — TAP TO RECORD YOUR EXIT PRICE
+      </button>
+    </div>`;
+    return;
+  }
+
+  // Closed
+  if (ts.state==='closed') {
+    const win = ts.pnl>=0;
+    el.innerHTML = `
+    <div style="background:${win?'rgba(167,139,250,0.08)':'rgba(255,61,90,0.08)'};border:2px solid ${win?'var(--purple)':'var(--red)'};border-radius:12px;padding:14px;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+        <div>
+          <div style="font-size:9px;font-weight:800;letter-spacing:1.5px;color:${win?'var(--purple)':'var(--red)'};">⚡ INSTINCT · ${win?'✅ WIN':'❌ LOSS'}</div>
+          <div style="font-size:17px;font-weight:900;">TSLA $${ts.strike}C</div>
+          <div style="color:var(--muted);font-size:9px;">${ts.entryDate} · ${ts.entryTime} → ${ts.exitTime}</div>
+        </div>
+        <div style="text-align:center;">
+          <div style="color:var(--muted);font-size:8px;margin-bottom:2px;">FINAL P&L</div>
+          <div style="font-size:26px;font-weight:900;color:${win?'var(--purple)':'var(--red)'};">${ts.pnl>=0?'+':''}$${ts.pnl}</div>
+          <div style="font-size:12px;font-weight:700;color:${win?'var(--purple)':'var(--red)'};">${ts.pct>=0?'+':''}${ts.pct}%</div>
+        </div>
+      </div>
+      <div class="grid3" style="margin-bottom:10px;">
+        <div class="cell"><div class="lbl">Paid</div><div class="val" style="font-size:12px;">$${ts.entryPrice}</div></div>
+        <div class="cell"><div class="lbl">Sold</div><div class="val" style="color:${win?'var(--purple)':'var(--red)'};font-size:12px;">$${ts.exitPrice}</div></div>
+        <div class="cell"><div class="lbl">P&L</div><div class="val" style="color:${win?'var(--purple)':'var(--red)'};font-size:12px;">${ts.pnl>=0?'+':''}$${ts.pnl}</div></div>
+      </div>
+      <button class="action-btn" onclick="clearInstinct()" style="background:var(--surface);color:var(--muted);border:1px solid var(--border);">
+        🔄 Clear — Ready for Next Instinct Trade
+      </button>
+    </div>`;
+  }
 }
 
 function getTradeRec(entryPrice, entryStock) {
@@ -949,6 +1150,7 @@ function updateGlance() {
     document.getElementById('trade-section').style.display='none';
     document.getElementById('no-signal-box').style.display='block';
   }
+  renderInstinctCard();
 }
 
 // ═══════════════════════════════════════════
