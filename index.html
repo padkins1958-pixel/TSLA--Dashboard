@@ -150,11 +150,11 @@ body{background:var(--bg);color:var(--text);font-family:'SF Mono','Fira Code',mo
         <div id="ytd-amount" style="font-size:14px;font-weight:900;color:var(--muted);">$0</div>
         <div id="ytd-count" style="font-size:8px;color:var(--muted);">0 trades</div>
       </div>
-      <div>
-        <div class="mode-badge" id="h-mode" style="border-color:var(--orange);color:var(--orange);background:rgba(251,146,60,0.1);">◌ CONNECTING</div>
-        <div id="countdown" style="font-size:9px;margin-top:3px;color:var(--muted);">Outside trading hours</div>
-        <div id="manual-counter" style="font-size:9px;margin-top:2px;font-weight:700;color:var(--green);">Manual: 9 left</div>
-        <div id="api-calls-left" style="font-size:8px;color:var(--muted);">API: 0/150</div>
+      <div style="display:flex;flex-direction:column;gap:4px;">
+        <div class="mode-badge" id="h-mode" style="border-color:var(--orange);color:var(--orange);background:rgba(251,146,60,0.1);text-align:center;">◌ CONNECTING</div>
+        <div id="countdown" style="padding:3px 8px;border-radius:14px;font-size:9px;font-weight:700;border:1px solid var(--blue);color:var(--blue);background:rgba(56,189,248,0.12);text-align:center;letter-spacing:0.5px;">Outside trading hours</div>
+        <div id="manual-counter" style="padding:3px 8px;border-radius:14px;font-size:9px;font-weight:700;border:1px solid var(--green);color:var(--green);background:rgba(0,229,160,0.12);text-align:center;letter-spacing:0.5px;">Manual: 9 left</div>
+        <div id="api-calls-left" style="padding:3px 8px;border-radius:14px;font-size:9px;font-weight:700;border:1px solid var(--muted);color:var(--muted);background:rgba(107,114,128,0.1);text-align:center;letter-spacing:0.5px;">API: 0/150</div>
       </div>
       <button class="fetch-btn" id="fetch-btn" onclick="manualFetch()">↻ Refresh (9)</button>
     </div>
@@ -470,12 +470,17 @@ function startCountdown() {
     }
     if (countdownSecs <= 0) {
       el.textContent = '⟳ Refreshing…';
+      el.style.borderColor = 'var(--green)';
       el.style.color = 'var(--green)';
+      el.style.background = 'rgba(0,229,160,0.12)';
     } else {
       const m = Math.floor(countdownSecs/60);
       const s = countdownSecs%60;
+      const urgent = countdownSecs<=30;
       el.textContent = 'Next refresh: '+m+':'+String(s).padStart(2,'0');
-      el.style.color = countdownSecs<=30 ? 'var(--yellow)' : 'var(--green)';
+      el.style.borderColor = urgent?'var(--yellow)':'var(--blue)';
+      el.style.color = urgent?'var(--yellow)':'var(--blue)';
+      el.style.background = urgent?'rgba(245,197,24,0.12)':'rgba(56,189,248,0.12)';
     }
   }, 1000);
 }
