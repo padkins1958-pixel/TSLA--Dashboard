@@ -1147,8 +1147,22 @@ function updateGlance() {
     document.getElementById('no-signal-box').style.display='none';
     document.getElementById('opt-cards').innerHTML=opts.map((o,i)=>renderOpt(o,i)).join('');
   } else {
-    document.getElementById('trade-section').style.display='none';
-    document.getElementById('no-signal-box').style.display='block';
+    // Even with no signal — if a trade is open or closed show the card
+    const nearActive = tradeStates['near'] && tradeStates['near'].state !== 'idle';
+    const swingActive = tradeStates['swing'] && tradeStates['swing'].state !== 'idle';
+    if (nearActive || swingActive) {
+      document.getElementById('trade-section').style.display='block';
+      document.getElementById('no-signal-box').style.display='none';
+      // Render with placeholder opt data since signal is gone
+      const placeholder = {strike:'—',expiry:'—',daysOut:0,buyIn:0,target:0,stop:0,conf:0,bid:0,ask:0,limit:0,firedAt:0};
+      const cards = [];
+      if (nearActive) cards.push(renderOpt(placeholder, 0));
+      if (swingActive) cards.push(renderOpt(placeholder, 1));
+      document.getElementById('opt-cards').innerHTML = cards.join('');
+    } else {
+      document.getElementById('trade-section').style.display='none';
+      document.getElementById('no-signal-box').style.display='block';
+    }
   }
   renderInstinctCard();
 }
