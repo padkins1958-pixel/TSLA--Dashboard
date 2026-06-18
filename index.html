@@ -145,33 +145,28 @@ body{background:var(--bg);color:var(--text);font-family:'SF Mono','Fira Code',mo
       <div class="stat"><span class="lbl">LOW</span><span class="val" id="h-low" style="color:var(--red)">—</span></div>
       <div class="stat"><span class="lbl">PREV</span><span class="val" id="h-prev" style="color:var(--muted)">—</span></div>
       <div class="stat"><span class="lbl">MARKET</span><span class="val" id="h-mkt">—</span></div>
-      <div id="ytd-badge" style="padding:4px 10px;border-radius:10px;border:1px solid var(--muted);background:var(--muted);text-align:center;min-width:70px;">
-        <div style="color:#fff;font-size:8px;font-weight:900;letter-spacing:1px;">YTD P&L</div>
-        <div style="color:#fff;font-size:7px;margin-bottom:2px;opacity:0.85;">Dashboard Trades</div>
-        <div id="ytd-amount" style="font-size:14px;font-weight:900;color:#fff;">$0</div>
-        <div id="ytd-count" style="font-size:8px;color:#fff;opacity:0.85;">0 trades</div>
+      <div id="ytd-badge" style="border-color:var(--muted);background:rgba(107,114,128,0.1);padding:4px 10px;border-radius:10px;border:1px solid;text-align:center;min-width:70px;">
+        <div style="color:var(--muted);font-size:8px;font-weight:700;letter-spacing:1px;">YTD P&L</div>
+        <div style="color:var(--muted);font-size:7px;margin-bottom:2px;">Dashboard Trades</div>
+        <div id="ytd-amount" style="font-size:14px;font-weight:900;color:var(--muted);">$0</div>
+        <div id="ytd-count" style="font-size:8px;color:var(--muted);">0 trades</div>
       </div>
-      <div id="instinct-ytd-badge" style="padding:4px 10px;border-radius:10px;border:1px solid var(--muted);background:var(--muted);text-align:center;min-width:70px;">
-        <div style="color:#fff;font-size:8px;font-weight:900;letter-spacing:1px;">YTD P&L</div>
-        <div style="color:#fff;font-size:7px;margin-bottom:2px;opacity:0.85;">Instinct Trades</div>
-        <div id="instinct-ytd-amount" style="font-size:14px;font-weight:900;color:#fff;">$0</div>
-        <div id="instinct-ytd-count" style="font-size:8px;color:#fff;opacity:0.85;">0 trades</div>
+      <div id="instinct-ytd-badge" style="padding:4px 10px;border-radius:10px;border:1px solid var(--muted);background:rgba(107,114,128,0.1);text-align:center;min-width:70px;">
+        <div style="color:var(--muted);font-size:8px;font-weight:700;letter-spacing:1px;">YTD P&L</div>
+        <div style="color:var(--muted);font-size:7px;margin-bottom:2px;">Instinct Trades</div>
+        <div id="instinct-ytd-amount" style="font-size:14px;font-weight:900;color:var(--muted);">$0</div>
+        <div id="instinct-ytd-count" style="font-size:8px;color:var(--muted);">0 trades</div>
       </div>
-      <div id="winrate-badge" style="padding:4px 10px;border-radius:10px;border:1px solid var(--green);background:var(--green);text-align:center;min-width:70px;">
-        <div style="color:#fff;font-size:8px;font-weight:900;letter-spacing:1px;">DASHBOARD W/L</div>
-        <div id="dash-winrate-pct" style="font-size:14px;font-weight:900;color:#fff;">—</div>
-        <div id="dash-winrate-record" style="font-size:8px;color:#fff;opacity:0.85;">0W / 0L</div>
-      </div>
-      <div id="instinct-winrate-badge" style="padding:4px 10px;border-radius:10px;border:1px solid var(--purple);background:var(--purple);text-align:center;min-width:70px;">
-        <div style="color:#fff;font-size:8px;font-weight:900;letter-spacing:1px;">INSTINCT W/L</div>
-        <div id="inst-winrate-pct" style="font-size:14px;font-weight:900;color:#fff;">—</div>
-        <div id="inst-winrate-record" style="font-size:8px;color:#fff;opacity:0.85;">0W / 0L</div>
+      <div id="winrate-badge" style="padding:4px 10px;border-radius:10px;border:1px solid var(--muted);background:rgba(107,114,128,0.1);text-align:center;min-width:70px;">
+        <div style="color:var(--muted);font-size:8px;font-weight:700;letter-spacing:1px;">WIN RATE</div>
+        <div id="winrate-pct" style="font-size:14px;font-weight:900;color:var(--muted);">—</div>
+        <div id="winrate-record" style="font-size:8px;color:var(--muted);">0W / 0L</div>
       </div>
       <div style="display:flex;flex-direction:column;gap:4px;">
-        <div class="mode-badge" id="h-mode" style="border-color:var(--orange);color:#fff;background:var(--orange);text-align:center;font-weight:900;">◌ CONNECTING</div>
-        <div id="countdown" style="padding:3px 8px;border-radius:14px;font-size:9px;font-weight:900;border:1px solid var(--blue);color:#fff;background:var(--blue);text-align:center;letter-spacing:0.5px;">Outside trading hours</div>
-        <div id="manual-counter" style="padding:3px 8px;border-radius:14px;font-size:9px;font-weight:900;border:1px solid var(--green);color:#fff;background:var(--green);text-align:center;letter-spacing:0.5px;">Manual: 18 left</div>
-        <div id="api-calls-left" style="padding:3px 8px;border-radius:14px;font-size:9px;font-weight:900;border:1px solid var(--muted);color:#fff;background:var(--muted);text-align:center;letter-spacing:0.5px;">API: 0/300</div>
+        <div class="mode-badge" id="h-mode" style="border-color:var(--orange);color:var(--orange);background:rgba(251,146,60,0.1);text-align:center;">◌ CONNECTING</div>
+        <div id="countdown" style="padding:3px 8px;border-radius:14px;font-size:9px;font-weight:700;border:1px solid var(--blue);color:var(--blue);background:rgba(56,189,248,0.12);text-align:center;letter-spacing:0.5px;">Outside trading hours</div>
+        <div id="manual-counter" style="padding:3px 8px;border-radius:14px;font-size:9px;font-weight:700;border:1px solid var(--green);color:var(--green);background:rgba(0,229,160,0.12);text-align:center;letter-spacing:0.5px;">Manual: 18 left</div>
+        <div id="api-calls-left" style="padding:3px 8px;border-radius:14px;font-size:9px;font-weight:700;border:1px solid var(--muted);color:var(--muted);background:rgba(107,114,128,0.1);text-align:center;letter-spacing:0.5px;">API: 0/300</div>
       </div>
       <button class="fetch-btn" id="fetch-btn" onclick="manualFetch()">↻ Refresh (9)</button>
     </div>
@@ -208,22 +203,8 @@ body{background:var(--bg);color:var(--text);font-family:'SF Mono','Fira Code',mo
     </div>
     <div id="checks"></div>
     <div id="trade-section" style="display:none;">
-      <div style="color:var(--green);font-weight:900;font-size:9px;letter-spacing:1.5px;margin-bottom:6px;">📋 TRADE CARDS — 1 CONTRACT EACH</div>
+      <div style="color:var(--green);font-weight:800;font-size:9px;letter-spacing:1.5px;margin-bottom:6px;">📋 TRADE CARDS — 1 CONTRACT EACH</div>
       <div id="opt-cards"></div>
-      <!-- Standalone I'M IN section -->
-      <div id="im-in-section" style="background:rgba(0,229,160,0.06);border:2px solid rgba(0,229,160,0.5);border-radius:12px;padding:14px;margin-top:4px;">
-        <div style="color:var(--green);font-weight:900;font-size:10px;letter-spacing:1.5px;margin-bottom:8px;">✅ ENTER A TRADE</div>
-        <div style="color:var(--muted);font-size:9px;margin-bottom:8px;">Buying the suggested call? Tap I'M IN and enter what you paid on Robinhood.</div>
-        <div id="contract-suggestion" style="margin-bottom:10px;"></div>
-        <div style="display:flex;gap:8px;flex-wrap:wrap;">
-          <button onclick="enterTrade('near')" style="flex:1;background:var(--green);color:#fff;font-weight:900;font-size:12px;padding:11px;border-radius:9px;border:none;cursor:pointer;font-family:inherit;">
-            ✅ I'M IN — Near-term
-          </button>
-          <button onclick="enterTrade('swing')" style="flex:1;background:var(--purple);color:#fff;font-weight:900;font-size:12px;padding:11px;border-radius:9px;border:none;cursor:pointer;font-family:inherit;">
-            ✅ I'M IN — Swing
-          </button>
-        </div>
-      </div>
     </div>
     <div id="no-signal-box" class="card" style="text-align:center;color:var(--muted);padding:14px;">
       ⏳ No trade setup — wait for 3/4 or 4/4 signal
@@ -259,7 +240,7 @@ body{background:var(--bg);color:var(--text);font-family:'SF Mono','Fira Code',mo
   <div id="tab-spike" class="tab">
     <div style="display:flex;justify-content:space-between;align-items:center;">
       <div>
-        <div style="font-size:13px;font-weight:900;color:var(--green);letter-spacing:1px;">⚡ 8AM &amp; 8PM SPIKE TRACKER</div>
+        <div style="font-size:13px;font-weight:900;color:var(--green);letter-spacing:1px;">⚡ 7AM &amp; 8PM SPIKE TRACKER</div>
         <div style="color:var(--muted);font-size:9px;margin-top:2px;">Auto-records both institutional spike windows daily</div>
       </div>
       <div style="text-align:right;">
@@ -268,7 +249,7 @@ body{background:var(--bg);color:var(--text);font-family:'SF Mono','Fira Code',mo
       </div>
     </div>
     <div id="am-win" class="spike-win">
-      <div class="spike-win-title" style="color:var(--green);">☀️ 8AM SPIKE · 8:00–8:15 AM ET</div>
+      <div class="spike-win-title" style="color:var(--green);">☀️ 7AM SPIKE · 7:00–7:15 AM ET</div>
       <div id="am-body" style="text-align:center;color:var(--muted);padding:8px 0;">⏳ Waiting for 7:00 AM ET — keep dashboard open</div>
     </div>
     <div id="pm-win" class="spike-win">
@@ -330,16 +311,8 @@ body{background:var(--bg);color:var(--text);font-family:'SF Mono','Fira Code',mo
       <div id="sessions"></div>
     </div>
     <div class="card" style="background:rgba(0,229,160,0.05);border:1px solid rgba(0,229,160,0.22);">
-      <div style="color:var(--green);font-weight:900;font-size:9px;margin-bottom:6px;">📌 THE GOLDEN RULE</div>
+      <div style="color:var(--green);font-weight:800;font-size:9px;margin-bottom:4px;">📌 THE GOLDEN RULE</div>
       <div style="color:var(--muted);font-size:10px;line-height:1.8;">Monitor all hours for <span style="color:var(--text);">awareness</span>. Only <span style="color:var(--green);font-weight:700;">act on calls</span> during green WATCH windows when Quick Glance shows 3/4 or 4/4. <b style="color:var(--red);">NEVER hold calls overnight.</b></div>
-    </div>
-    <div class="card" style="background:rgba(56,189,248,0.05);border:1px solid rgba(56,189,248,0.25);">
-      <div style="color:var(--blue);font-weight:900;font-size:9px;margin-bottom:8px;">📖 WHAT DO GAP UP AND GAP DOWN MEAN?</div>
-      <div style="color:var(--muted);font-size:10px;line-height:1.9;">
-        <div style="margin-bottom:8px;"><span style="color:var(--green);font-weight:900;">🚀 GAP UP</span> — TSLA opens HIGHER than it closed yesterday. Example: closed at $403, opens at $407. That $4 difference is the gap. Means overnight buyers were aggressive. <span style="color:var(--text);">Generally bullish for calls</span> — but wait for 9:45 AM to confirm it holds before buying. Sometimes the gap fills back down in the first 30 minutes.</div>
-        <div style="margin-bottom:8px;"><span style="color:var(--red);font-weight:900;">📉 GAP DOWN</span> — TSLA opens LOWER than yesterday's close. Example: closed at $405, opens at $401. Bad overnight news or selling pressure. <span style="color:var(--text);">Cautious with calls</span> — wait for a clear reversal signal. Watch the 2:00-2:30 PM low point for a potential bounce setup.</div>
-        <div><span style="color:var(--yellow);font-weight:900;">➡️ FLAT OPEN</span> — Opens within $1.50 of yesterday's close. No strong overnight opinion. <span style="color:var(--text);">Let the first 30 minutes set direction</span> before making any decisions. Your signals will tell you which way it wants to go.</div>
-      </div>
     </div>
     <p class="disclaimer">⚠️ EDUCATIONAL USE ONLY. Not financial advice.</p>
   </div>
@@ -347,7 +320,7 @@ body{background:var(--bg);color:var(--text);font-family:'SF Mono','Fira Code',mo
 </div><!-- /dashboard -->
 
 <script>
-// TSLA Options Dashboard
+'use strict';
 
 // ═══════════════════════════════════════════
 // STATE
@@ -403,7 +376,7 @@ function loadStorage() {
     } else {
       manualRefreshesLeft = 18;
       localStorage.setItem('tsla_manual_date', new Date().toDateString());
-      localStorage.setItem('tsla_manual_left', '18');
+      localStorage.setItem('tsla_manual_left', '9');
     }
   } catch(e){}
 }
@@ -526,17 +499,17 @@ function startCountdown() {
     }
     if (countdownSecs <= 0) {
       el.textContent = '⟳ Refreshing…';
-      el.style.background = 'var(--green)';
       el.style.borderColor = 'var(--green)';
-      el.style.color = '#fff';
+      el.style.color = 'var(--green)';
+      el.style.background = 'rgba(0,229,160,0.12)';
     } else {
       const m = Math.floor(countdownSecs/60);
       const s = countdownSecs%60;
       const urgent = countdownSecs<=30;
       el.textContent = 'Next refresh: '+m+':'+String(s).padStart(2,'0');
-      el.style.background = urgent?'var(--yellow)':'var(--blue)';
       el.style.borderColor = urgent?'var(--yellow)':'var(--blue)';
-      el.style.color = '#fff';
+      el.style.color = urgent?'var(--yellow)':'var(--blue)';
+      el.style.background = urgent?'rgba(245,197,24,0.12)':'rgba(56,189,248,0.12)';
     }
   }, 1000);
 }
@@ -544,12 +517,9 @@ function startCountdown() {
 function updateManualCounter() {
   const el = document.getElementById('manual-counter');
   const btn = document.getElementById('fetch-btn');
-  const col = manualRefreshesLeft>3?'var(--green)':manualRefreshesLeft>0?'var(--yellow)':'var(--red)';
   if (el) {
     el.textContent = 'Manual: '+manualRefreshesLeft+' left';
-    el.style.color = '#fff';
-    el.style.background = col;
-    el.style.borderColor = col;
+    el.style.color = manualRefreshesLeft>3?'var(--green)':manualRefreshesLeft>0?'var(--yellow)':'var(--red)';
   }
   if (btn) {
     if (manualRefreshesLeft <= 0) {
@@ -675,11 +645,9 @@ function setHeader(price, chg, pct, hi, lo, prev) {
 
 function setMode(label, color) {
   const el = document.getElementById('h-mode');
-  el.textContent = label;
-  el.style.color = '#fff';
-  el.style.fontWeight = '900';
-  el.style.background = color;
-  el.style.borderColor = color;
+  el.textContent = label; el.style.color = color;
+  const bg = color==='var(--green)'?'rgba(0,229,160,0.1)':color==='var(--red)'?'rgba(255,61,90,0.1)':'rgba(251,146,60,0.1)';
+  el.style.background = bg; el.style.borderColor = color;
 }
 
 function updateMktStatus() {
@@ -757,39 +725,35 @@ function updateYTD() {
   const cnt   = document.getElementById('ytd-count');
   if (!badge||!amt||!cnt) return;
   const col = ytdPnl>0?'var(--green)':ytdPnl<0?'var(--red)':'var(--muted)';
-  badge.style.background  = col;
+  const bg  = ytdPnl>0?'rgba(0,229,160,0.1)':ytdPnl<0?'rgba(255,61,90,0.1)':'rgba(107,114,128,0.1)';
   badge.style.borderColor = col;
+  badge.style.background  = bg;
   amt.textContent  = (ytdPnl>=0?'+':'')+'$'+ytdPnl;
+  amt.style.color  = col;
   cnt.textContent  = ytdTrades.length+' trade'+(ytdTrades.length!==1?'s':'');
 }
 
 function updateWinRate() {
-  // Dashboard win rate
-  const dBadge = document.getElementById('winrate-badge');
-  const dPct   = document.getElementById('dash-winrate-pct');
-  const dRec   = document.getElementById('dash-winrate-record');
-  if (dBadge&&dPct&&dRec) {
-    const dTotal = ytdTrades.length;
-    const dWins  = ytdTrades.filter(t=>t.pnl>=0).length;
-    const dLoss  = dTotal-dWins;
-    const col = dTotal===0?'var(--green)':Math.round(dWins/dTotal*100)>=76?'var(--green)':Math.round(dWins/dTotal*100)>=51?'var(--yellow)':'var(--red)';
-    dBadge.style.background=col; dBadge.style.borderColor=col;
-    dPct.textContent  = dTotal===0?'—':Math.round(dWins/dTotal*100)+'%';
-    dRec.textContent  = dWins+'W / '+dLoss+'L';
+  const badge = document.getElementById('winrate-badge');
+  const pct   = document.getElementById('winrate-pct');
+  const rec   = document.getElementById('winrate-record');
+  if (!badge||!pct||!rec) return;
+  const allTrades = [...ytdTrades, ...instinctTrades];
+  const total = allTrades.length;
+  const wins  = allTrades.filter(t=>t.pnl>=0).length;
+  const losses= total-wins;
+  if (total===0) {
+    pct.textContent='—'; rec.textContent='0W / 0L';
+    badge.style.borderColor='var(--muted)';
+    badge.style.background='rgba(107,114,128,0.1)';
+    pct.style.color='var(--muted)'; return;
   }
-  // Instinct win rate
-  const iBadge = document.getElementById('instinct-winrate-badge');
-  const iPct   = document.getElementById('inst-winrate-pct');
-  const iRec   = document.getElementById('inst-winrate-record');
-  if (iBadge&&iPct&&iRec) {
-    const iTotal = instinctTrades.length;
-    const iWins  = instinctTrades.filter(t=>t.pnl>=0).length;
-    const iLoss  = iTotal-iWins;
-    const col = iTotal===0?'var(--purple)':Math.round(iWins/iTotal*100)>=76?'var(--purple)':Math.round(iWins/iTotal*100)>=51?'var(--yellow)':'var(--red)';
-    iBadge.style.background=col; iBadge.style.borderColor=col;
-    iPct.textContent  = iTotal===0?'—':Math.round(iWins/iTotal*100)+'%';
-    iRec.textContent  = iWins+'W / '+iLoss+'L';
-  }
+  const rate = Math.round(wins/total*100);
+  const col  = rate>=76?'var(--green)':rate>=51?'var(--yellow)':'var(--red)';
+  const bg   = rate>=76?'rgba(0,229,160,0.1)':rate>=51?'rgba(245,197,24,0.1)':'rgba(255,61,90,0.1)';
+  badge.style.borderColor=col; badge.style.background=bg;
+  pct.textContent=rate+'%'; pct.style.color=col;
+  rec.textContent=wins+'W / '+losses+'L'; rec.style.color='var(--muted)';
 }
 
 // ═══════════════════════════════════════════
@@ -800,14 +764,12 @@ function enterTrade(key) {
   const price = parseFloat(priceStr);
   if (!price||price<=0) return;
   const idx = key==='near'?0:1;
-  const o = opts && opts[idx];
   tradeStates[key] = {
     state:'in', entryPrice:price, entryStock:livePrice,
     entryTime:new Date().toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit'}),
     entryDate:new Date().toLocaleDateString('en-US',{month:'short',day:'numeric'}),
-    strike:o && o.strike||'—', expiry:o && o.expiry||'—',
-    type:key==='near'?'Near-term':'Swing',
-    savedOpt: o || null
+    strike:opts?.[idx]?.strike, expiry:opts?.[idx]?.expiry,
+    type:key==='near'?'Near-term':'Swing'
   };
   saveTradeData();
   updateGlance();
@@ -881,9 +843,11 @@ function updateInstinctYTD() {
   const cnt   = document.getElementById('instinct-ytd-count');
   if (!badge||!amt||!cnt) return;
   const col = instinctPnl>0?'var(--purple)':instinctPnl<0?'var(--red)':'var(--muted)';
-  badge.style.background  = col;
+  const bg  = instinctPnl>0?'rgba(167,139,250,0.1)':instinctPnl<0?'rgba(255,61,90,0.1)':'rgba(107,114,128,0.1)';
   badge.style.borderColor = col;
+  badge.style.background  = bg;
   amt.textContent = (instinctPnl>=0?'+':'')+'$'+instinctPnl;
+  amt.style.color = col;
   cnt.textContent = instinctTrades.length+' trade'+(instinctTrades.length!==1?'s':'');
 }
 
@@ -941,11 +905,10 @@ function renderInstinctCard() {
         <div style="font-size:15px;font-weight:900;color:${rec.col};">${rec.action}</div>
         <div style="font-size:9px;color:var(--muted);margin-top:2px;">${rec.reason}</div>
       </div>
-      ${renderSellTargets(ts.entryPrice, ts.entryStock)}
       <div class="grid3" style="margin-bottom:10px;">
         <div class="cell"><div class="lbl">Paid</div><div class="val" style="font-size:12px;">$${ts.entryPrice}</div></div>
         <div class="cell"><div class="lbl">Est. Now</div><div class="val" style="color:${pCol};font-size:12px;">${cur?'$'+cur:'—'}</div></div>
-        <div class="cell"><div class="lbl">Stock In</div><div class="val" style="font-size:12px;">$${ts.entryStock ? ts.entryStock.toFixed(2) : '—'||'—'}</div></div>
+        <div class="cell"><div class="lbl">Stock In</div><div class="val" style="font-size:12px;">$${ts.entryStock?.toFixed(2)||'—'}</div></div>
       </div>
       <button class="action-btn" onclick="sellInstinct()" style="background:var(--orange);color:#000;">
         💰 I SOLD — TAP TO RECORD YOUR EXIT PRICE
@@ -983,109 +946,7 @@ function renderInstinctCard() {
   }
 }
 
-// ── Contract Suggestion ───────────────────────────────
-function getContractSuggestion() {
-  var el = document.getElementById('contract-suggestion');
-  if (!el) return;
-  if (!signal) { el.innerHTML=''; return; }
-  var et = getET();
-  var mins = et.getHours()*60+et.getMinutes();
-  var before230 = mins < 870;
-  var rsiGood = signal.rsi >= 50 && signal.rsi <= 68;
-  var macdGood = signal.macdH > 0;
-  var score4 = signal.score === 4;
-  if (score4 && rsiGood && macdGood && before230) {
-    el.innerHTML = '<div style="background:rgba(0,229,160,0.12);border:2px solid var(--green);border-radius:9px;padding:10px 12px;text-align:center;">'
-      + '<div style="font-size:14px;font-weight:900;color:var(--green);">🔥 CONDITIONS SUGGEST: 2 CONTRACTS</div>'
-      + '<div style="font-size:9px;color:var(--muted);margin-top:3px;">4/4 signal &middot; RSI ' + signal.rsi + ' (room to run) &middot; MACD positive &middot; Before 2:30 PM</div>'
-      + '<div style="font-size:9px;color:var(--green);margin-top:3px;">Buy 2 &rarr; sell at 25% gain = same profit, less time in trade</div>'
-      + '</div>';
-  } else {
-    var reasons = [];
-    if (!score4) reasons.push('signal is '+signal.score+'/4 not 4/4');
-    if (!rsiGood) reasons.push('RSI '+signal.rsi+(signal.rsi>68?' overbought':' too low'));
-    if (!macdGood) reasons.push('MACD negative');
-    if (!before230) reasons.push('after 2:30 PM');
-    el.innerHTML = '<div style="background:rgba(245,197,24,0.08);border:2px solid var(--yellow);border-radius:9px;padding:10px 12px;text-align:center;">'
-      + '<div style="font-size:13px;font-weight:900;color:var(--yellow);">✅ 1 CONTRACT ONLY</div>'
-      + '<div style="font-size:9px;color:var(--muted);margin-top:3px;">' + reasons.join(' &middot; ') + '</div>'
-      + '</div>';
-  }
-}
 function getTradeRec(entryPrice, entryStock) {
-  if (!signal||!livePrice||!entryStock) return {action:'HOLD',reason:'Checking indicators…',col:'var(--muted)'};
-  const cur = +(entryPrice+(livePrice-entryStock)*0.4).toFixed(2);
-  const pct = (cur-entryPrice)/entryPrice*100;
-  const b = [signal.e9>signal.e21,signal.rsi>45&&signal.rsi<75,signal.macdH>0].filter(Boolean).length;
-  if (pct<=-40) return {action:'STOP OUT ⚠️',reason:'Approaching stop loss — exit to protect capital.',col:'var(--red)'};
-  if (pct>=100)  return {action:'SELL NOW 🚀',reason:'100% gain — exceptional. Sell immediately.',col:'var(--green)'};
-  if (pct>=75)   return b>=3&&signal.rsi<68?{action:'HOLD',reason:'Still running — RSI has room. Target 100%.',col:'var(--green)'}:{action:'SELL NOW',reason:'75% is exceptional — lock it in.',col:'var(--orange)'};
-  if (pct>=50)   return b===3?{action:'HOLD',reason:'Strong momentum — target 75%.',col:'var(--green)'}:{action:'SELL NOW',reason:'50% is a strong win — take it.',col:'var(--orange)'};
-  if (pct>=25)   return b===3?{action:'HOLD',reason:'All indicators bullish — let it run to 50%.',col:'var(--green)'}:b===2?{action:'WATCH',reason:'Mixed signals — watch next candle.',col:'var(--yellow)'}:{action:'SELL NOW',reason:'Indicators weakening — take the 25%.',col:'var(--red)'};
-  return {action:'HOLD',reason:'Building position — monitor indicators.',col:'var(--muted)'};
-}
-
-// ── Sell Target Suggestions with Probability ─────────
-function getSellTargets(entryPrice, entryStock) {
-  if (!livePrice || !signal) return null;
-  const cur = +(entryPrice + (livePrice - entryStock) * 0.4).toFixed(2);
-
-  // Momentum score 0-5 based on indicators
-  let momentum = 0;
-  if (signal.e9 > signal.e21) momentum++;
-  if (signal.rsi > 45 && signal.rsi < 70) momentum++;
-  if (signal.rsi > 50) momentum++;
-  if (signal.macdH > 0) momentum++;
-  if (signal.score >= 3) momentum++;
-
-  // Base probabilities adjusted by momentum
-  const mFactor = momentum / 5; // 0 to 1
-
-  // Calculate 4 target prices based on entry
-  const base   = +(entryPrice * 1.12).toFixed(2);  // ~12% gain
-  const strong = +(entryPrice * 1.30).toFixed(2);  // ~30% gain
-  const double = +(entryPrice * 1.60).toFixed(2);  // ~60% gain
-  const homer  = +(entryPrice * 2.20).toFixed(2);  // ~120% gain
-
-  // Probabilities — higher momentum = higher probability
-  const p1 = Math.min(97, Math.round(88 + mFactor * 9));   // Base Hit: 88-97%
-  const p2 = Math.min(85, Math.round(68 + mFactor * 17));  // Strong:   68-85%
-  const p3 = Math.min(70, Math.round(48 + mFactor * 22));  // Double:   48-70%
-  const p4 = Math.min(45, Math.round(14 + mFactor * 31));  // Homer:    14-45%
-
-  const profit = p => '+$'+((p-entryPrice)*100).toFixed(0);
-  const pctGain = p => '+'+(((p-entryPrice)/entryPrice)*100).toFixed(0)+'%';
-
-  return [
-    {label:'🟢 Base Hit',  price:base,   prob:p1, profit:profit(base),   pct:pctGain(base),   col:'var(--green)',  tip:'Conservative. Stock barely needs to move. Take this and protect profit.'},
-    {label:'🔵 Strong Hit',price:strong, prob:p2, profit:profit(strong), pct:pctGain(strong), col:'var(--blue)',   tip:'Good momentum needed. Watch RSI — if it stays below 68 this is reachable.'},
-    {label:'🟡 Double',    price:double, prob:p3, profit:profit(double), pct:pctGain(double), col:'var(--yellow)', tip:'Requires sustained push. Only hold if signal stays 3/4+ and MACD positive.'},
-    {label:'🔴 Home Run',  price:homer,  prob:p4, profit:profit(homer),  pct:pctGain(homer),  col:'var(--red)',    tip:'Big move needed. High risk. Only if 4/4 signal and early in the trading day.'},
-  ];
-}
-
-function renderSellTargets(entryPrice, entryStock) {
-  const targets = getSellTargets(entryPrice, entryStock);
-  if (!targets) return '';
-  return `
-  <div style="background:var(--surface);border-radius:9px;padding:10px;margin-bottom:8px;">
-    <div style="font-size:8px;color:var(--muted);font-weight:700;letter-spacing:1px;margin-bottom:7px;">🎯 SUGGESTED SELL TARGETS</div>
-    ${targets.map(t=>`
-    <div style="margin-bottom:6px;">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:2px;">
-        <span style="font-size:10px;font-weight:900;color:${t.col};">${t.label}</span>
-        <span style="font-size:10px;font-weight:900;color:${t.col};">$${t.price}</span>
-        <span style="font-size:10px;font-weight:700;color:var(--green);">${t.profit}</span>
-        <span style="font-size:10px;font-weight:900;color:${t.col};">${t.prob}%</span>
-      </div>
-      <div style="background:var(--panel);border-radius:4px;height:6px;width:100%;overflow:hidden;">
-        <div style="height:100%;width:${t.prob}%;background:${t.col};border-radius:4px;transition:width 0.5s;"></div>
-      </div>
-      <div style="font-size:8px;color:var(--muted);margin-top:2px;">${t.tip}</div>
-    </div>`).join('')}
-    <div style="font-size:8px;color:var(--muted);margin-top:4px;font-style:italic;">⚠️ Probabilities are algorithmic estimates based on current momentum. Educational only.</div>
-  </div>`;
-}
   if (!signal||!livePrice||!entryStock) return {action:'HOLD',reason:'Checking indicators…',col:'var(--muted)'};
   const cur = +(entryPrice+(livePrice-entryStock)*0.4).toFixed(2);
   const pct = (cur-entryPrice)/entryPrice*100;
@@ -1136,11 +997,14 @@ function renderOpt(o, i) {
         </div>
         <div class="limit-instr">RH → TSLA $${o.strike}C ${o.expiry} → Limit Buy → <b style="color:var(--blue);">$${o.limit}</b> → 1 contract → submit.</div>
       </div>
-      <div class="grid3" style="margin-bottom:8px;">
+      <div class="grid3" style="margin-bottom:10px;">
         <div class="cell"><div class="lbl">Target</div><div class="val" style="color:var(--green);font-size:12px;">$${o.target}</div><div class="sub">+${(((o.target-o.buyIn)/o.buyIn)*100).toFixed(0)}%</div></div>
         <div class="cell"><div class="lbl">Stop</div><div class="val" style="color:var(--red);font-size:12px;">$${o.stop}</div><div class="sub">-${(((o.buyIn-o.stop)/o.buyIn)*100).toFixed(0)}%</div></div>
         <div class="cell"><div class="lbl">R/R</div><div class="val" style="color:var(--yellow);font-size:12px;">${rr}x</div></div>
       </div>
+      <button class="action-btn" onclick="enterTrade('${key}')" style="background:var(--green);color:#000;">
+        ✅ I'M IN — TAP TO ENTER YOUR PRICE
+      </button>
     </div>`;
 
   // STATE 2 — In the trade
@@ -1180,11 +1044,10 @@ function renderOpt(o, i) {
         <div style="font-size:15px;font-weight:900;color:${rec.col};">${rec.action}</div>
         <div style="font-size:9px;color:var(--muted);margin-top:2px;">${rec.reason}</div>
       </div>
-      ${renderSellTargets(ts.entryPrice, ts.entryStock)}
       <div class="grid3" style="margin-bottom:10px;">
         <div class="cell"><div class="lbl">Paid</div><div class="val" style="font-size:12px;">$${ts.entryPrice}</div></div>
         <div class="cell"><div class="lbl">Est. Now</div><div class="val" style="color:${pCol};font-size:12px;">${cur?'$'+cur:'—'}</div></div>
-        <div class="cell"><div class="lbl">Stock In</div><div class="val" style="font-size:12px;">$${ts.entryStock ? ts.entryStock.toFixed(2) : '—'||'—'}</div></div>
+        <div class="cell"><div class="lbl">Stock In</div><div class="val" style="font-size:12px;">$${ts.entryStock?.toFixed(2)||'—'}</div></div>
       </div>
       <button class="action-btn" onclick="sellTrade('${key}')" style="background:var(--orange);color:#000;">
         💰 I SOLD — TAP TO RECORD YOUR EXIT PRICE
@@ -1283,27 +1146,18 @@ function updateGlance() {
     document.getElementById('trade-section').style.display='block';
     document.getElementById('no-signal-box').style.display='none';
     document.getElementById('opt-cards').innerHTML=opts.map((o,i)=>renderOpt(o,i)).join('');
-    getContractSuggestion();
-    // Hide I'M IN buttons if both trades are already active
-    const imIn = document.getElementById('im-in-section');
-    if (imIn) {
-      const nearActive  = tradeStates['near']  && tradeStates['near'].state  === 'in';
-      const swingActive = tradeStates['swing'] && tradeStates['swing'].state === 'in';
-      imIn.style.display = (nearActive && swingActive) ? 'none' : 'block';
-      // Update individual buttons
-      const btns = imIn.querySelectorAll('button');
-      if (btns[0]) btns[0].style.display = nearActive  ? 'none' : 'block';
-      if (btns[1]) btns[1].style.display = swingActive ? 'none' : 'block';
-    }
   } else {
-    const nearActive  = tradeStates['near']  && tradeStates['near'].state  !== 'idle';
+    // Even with no signal — if a trade is open or closed show the card
+    const nearActive = tradeStates['near'] && tradeStates['near'].state !== 'idle';
     const swingActive = tradeStates['swing'] && tradeStates['swing'].state !== 'idle';
     if (nearActive || swingActive) {
       document.getElementById('trade-section').style.display='block';
       document.getElementById('no-signal-box').style.display='none';
+      // Render with placeholder opt data since signal is gone
+      const placeholder = {strike:'—',expiry:'—',daysOut:0,buyIn:0,target:0,stop:0,conf:0,bid:0,ask:0,limit:0,firedAt:0};
       const cards = [];
-      if (nearActive)  cards.push(renderOpt(tradeStates['near'].savedOpt  || {strike:tradeStates['near'].strike, expiry:tradeStates['near'].expiry,  daysOut:0,buyIn:0,target:0,stop:0,conf:0,bid:0,ask:0,limit:0,firedAt:0}, 0));
-      if (swingActive) cards.push(renderOpt(tradeStates['swing'].savedOpt || {strike:tradeStates['swing'].strike,expiry:tradeStates['swing'].expiry, daysOut:0,buyIn:0,target:0,stop:0,conf:0,bid:0,ask:0,limit:0,firedAt:0}, 1));
+      if (nearActive) cards.push(renderOpt(placeholder, 0));
+      if (swingActive) cards.push(renderOpt(placeholder, 1));
       document.getElementById('opt-cards').innerHTML = cards.join('');
     } else {
       document.getElementById('trade-section').style.display='none';
@@ -1373,44 +1227,17 @@ function drawChart(){
 // ═══════════════════════════════════════════
 async function runAI(){
   const btn=document.getElementById('ai-btn'),txt=document.getElementById('ai-text');
-  btn.textContent='Analyzing…';btn.disabled=true;txt.style.color='var(--muted)';txt.textContent='Analyzing full trading day and your trades…';
+  btn.textContent='Analyzing…';btn.disabled=true;txt.style.color='var(--muted)';txt.textContent='Scanning price action and indicators…';
   try{
     const last5=candles.slice(-5).map(c=>`${new Date(c.time).toLocaleTimeString()}: O=$${c.open} H=$${c.high} L=$${c.low} C=$${c.close}`).join('\n');
-
-    // Build trade history summary
-    const allTrades = [...ytdTrades.map(t=>({...t,type:'Dashboard'})), ...instinctTrades.map(t=>({...t,type:'Instinct'}))];
-    const tradesSummary = allTrades.length > 0
-      ? allTrades.map(t=>`${t.type} trade: Paid $${t.entryPrice} → Sold $${t.exitPrice} → P&L ${t.pnl>=0?'+':''}$${t.pnl} (${t.pct>=0?'+':''}${t.pct}%)`).join('\n')
-      : 'No trades recorded today yet.';
-
-    const res=await fetch('https://api.anthropic.com/v1/messages',{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({
-        model:'claude-sonnet-4-6',max_tokens:1000,
-        messages:[{role:'user',content:`You are a sharp TSLA options trading coach reviewing today's full trading session.
-
-PRICE ACTION — Last 5 candles:
-${last5}
-
-INDICATORS: EMA9=$${signal && signal.e9||'N/A'} EMA21=$${signal && signal.e21||'N/A'} RSI=${signal && signal.rsi||'N/A'} MACD=${signal && signal.macdH||'N/A'}
-Current signal: ${signal && signal.score||0}/4
-
-TODAY'S TRADES:
-${tradesSummary}
-
-Write a concise coaching review with exactly these 4 sections:
-1. PRICE ACTION: What did TSLA do today overall — direction, key levels, notable moves
-2. YOUR TRADES: Review each trade — did they enter and exit at good times? Could they have held longer for more profit or exited sooner to avoid risk? Be specific with prices.
-3. PATTERNS: What patterns repeated today that they should watch for tomorrow?
-4. TOMORROW: One specific actionable thing to watch for at market open tomorrow.
-
-Be direct, specific, and use actual prices from their trades. No disclaimers.`}]
-      })
-    });
+    const res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-6',max_tokens:1000,messages:[{role:'user',content:`You are a sharp TSLA options trader. Be tactical and concise.
+Last 5 candles:\n${last5}
+Live: $${livePrice?.toFixed(2)||'N/A'} | EMA9=$${signal?.e9||'N/A'} EMA21=$${signal?.e21||'N/A'} RSI=${signal?.rsi||'N/A'} MACD=${signal?.macdH||'N/A'}
+Signal: ${signal?.score||0}/4 — ${signal?.bullish?'BUY SIGNAL':'NO SIGNAL'}
+Write 4 sentences: (1) price action, (2) indicators, (3) risk, (4) action directive. No disclaimers.`}]})});
     const d=await res.json();
-    txt.style.color='var(--text)';txt.textContent=d.content && d.content.map(b=>b.text||'').join('')||'Analysis unavailable.';
-  }catch(e){txt.style.color='var(--muted)';txt.textContent='AI briefing unavailable — check connection.';}
+    txt.style.color='var(--text)';txt.textContent=d.content?.map(b=>b.text||'').join('')||'Analysis unavailable.';
+  }catch(e){txt.style.color='var(--muted)';txt.textContent='AI briefing unavailable.';}
   btn.textContent='Run Now';btn.disabled=false;
 }
 
@@ -1422,11 +1249,11 @@ function updateClock(){const et=getET(),el=document.getElementById('et-clock');i
 function checkSpike(){
   if(!livePrice)return;
   const et=getET(),mins=et.getHours()*60+et.getMinutes();
-  const inAM=mins>=480&&mins<495; // 8:00-8:15 AM
+  const inAM=mins>=420&&mins<435; // 7:00-7:15 AM
   const inPM=mins>=1200&&mins<1215; // 8:00-8:15 PM
   if(inAM&&!amWatching){amWatching=true;amData={open:livePrice,high:livePrice,low:livePrice};}
   if(inAM&&amWatching){amData.high=Math.max(amData.high,livePrice);amData.low=Math.min(amData.low,livePrice);renderSpikeWin('am',true,amData,mins);}
-  if(!inAM&&amWatching){amWatching=false;saveSpike('8AM',amData);renderSpikeLog();}
+  if(!inAM&&amWatching){amWatching=false;saveSpike('7AM',amData);renderSpikeLog();}
   if(!inAM&&!amWatching)renderSpikeWin('am',false,null,mins);
   if(inPM&&!pmWatching){pmWatching=true;pmData={open:livePrice,high:livePrice,low:livePrice};}
   if(inPM&&pmWatching){pmData.high=Math.max(pmData.high,livePrice);pmData.low=Math.min(pmData.low,livePrice);renderSpikeWin('pm',true,pmData,mins);}
@@ -1450,7 +1277,7 @@ function renderSpikeWin(which,watching,data,mins){
     <div style="font-size:10px;color:var(--muted);">Up: <span style="color:var(--green);font-weight:700;">+$${(data.high-data.open).toFixed(2)}</span> &nbsp; Down: <span style="color:var(--red);font-weight:700;">-$${(data.open-data.low).toFixed(2)}</span></div>`;
   }else{
     win.style.borderColor='var(--border)';
-    const msg=which==='am'?(mins<480?'⏳ Waiting for 8:00 AM ET — keep dashboard open':'Window passed — open before 8 AM tomorrow'):(mins>=495&&mins<1200?'⏳ Waiting for 8:00 PM ET':'Window passed');
+    const msg=which==='am'?(mins<420?'⏳ Waiting for 7:00 AM ET — keep dashboard open':'Window passed — open before 7 AM tomorrow'):(mins>=435&&mins<1200?'⏳ Waiting for 8:00 PM ET':'Window passed');
     el.innerHTML=`<div style="text-align:center;color:var(--muted);padding:7px 0;">${msg}</div>`;
   }
 }
@@ -1536,9 +1363,7 @@ function buildSessions(){
     {t:'12:00–4:00 AM',d:'Algo-only. Not actionable.',r:'Very High',w:false,c:'var(--muted)'},
     {t:'4:00–7:00 AM',d:'Pre-market opens. News drops here.',r:'High',w:true,c:'var(--orange)'},
     {t:'7:00–7:15 AM',d:'⚡ 7AM SPIKE WINDOW — stay at desk.',r:'Watch',w:true,c:'var(--green)'},
-    {t:'7:15–8:00 AM',d:'Pre-market momentum. Watch for setup.',r:'Medium',w:true,c:'var(--yellow)'},
-    {t:'8:00–8:15 AM',d:'⚡ 8AM SPIKE WINDOW — stay at desk.',r:'Watch',w:true,c:'var(--green)'},
-    {t:'8:15–9:30 AM',d:'Pre-market continues. Watch signals.',r:'Medium',w:true,c:'var(--yellow)'},
+    {t:'7:15–9:30 AM',d:'Pre-market momentum. Watch signals.',r:'Medium',w:true,c:'var(--yellow)'},
     {t:'9:30–9:45 AM',d:'Opening shakeout — DO NOT TRADE.',r:'Very High',w:false,c:'var(--red)'},
     {t:'9:45–11:30 AM',d:'Best call entry window — highest volume.',r:'Low',w:true,c:'var(--green)'},
     {t:'11:30 AM–2 PM',d:'Mid-day chop. Less reliable signals.',r:'Medium',w:false,c:'var(--yellow)'},
