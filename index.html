@@ -32,7 +32,7 @@ body{background:var(--bg);color:var(--text);font-family:'SF Mono','Fira Code',mo
 .stat .lbl{color:var(--muted);font-size:8px;letter-spacing:1px;display:block;text-align:center;}
 .stat .val{font-weight:700;font-size:11px;text-align:center;display:block;}
 .hdr-badge{padding:4px 10px;border-radius:10px;text-align:center;min-width:68px;border:1px solid;}
-.fetch-btn{background:var(--blue);border:none;color:#fff;font-size:9px;padding:5px 10px;border-radius:7px;cursor:pointer;font-family:inherit;font-weight:900;white-space:nowrap;}
+.fetch-btn{background:var(--blue);border:none;color:#000;font-size:9px;padding:5px 10px;border-radius:7px;cursor:pointer;font-family:inherit;font-weight:900;white-space:nowrap;}
 .fetch-btn:disabled{opacity:0.4;cursor:default;}
 #tab-bar{background:var(--surface);border-bottom:1px solid var(--border);display:flex;overflow-x:auto;padding:0 14px;}
 .tab-btn{background:none;border:none;border-bottom:2px solid transparent;color:var(--muted);font-weight:700;font-size:9px;letter-spacing:0.8px;padding:10px 10px;cursor:pointer;font-family:inherit;white-space:nowrap;}
@@ -70,7 +70,7 @@ body{background:var(--bg);color:var(--text);font-family:'SF Mono','Fira Code',mo
 .action-btn{width:100%;font-weight:900;font-size:13px;padding:12px;border-radius:10px;border:none;cursor:pointer;font-family:inherit;letter-spacing:0.5px;margin-top:4px;}
 .pnl-strip{background:var(--surface);border-radius:9px;padding:11px;display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-bottom:9px;}
 .sell-lvl{border-radius:9px;padding:10px 13px;display:flex;align-items:center;gap:9px;flex-wrap:wrap;border:1px solid;margin-bottom:6px;}
-#chart-svg,#rsi-svg{width:100%;display:block;}
+#chart-svg,#rsi-svg{display:block;}
 .spike-win{border:2px solid var(--border);border-radius:12px;padding:12px;}
 .spike-win-title{font-weight:800;font-size:10px;letter-spacing:1px;margin-bottom:8px;}
 .log-entry{background:var(--panel);border:1px solid var(--border);border-radius:9px;padding:9px 12px;margin-bottom:6px;}
@@ -113,40 +113,40 @@ body{background:var(--bg);color:var(--text);font-family:'SF Mono','Fira Code',mo
       <div class="stat"><span class="lbl">MARKET</span><span class="val" id="h-mkt">—</span></div>
 
       <!-- Dashboard P&L badge - solid green/red -->
-      <div id="ytd-badge" class="hdr-badge" style="background:var(--muted);border-color:var(--muted);">
-        <div style="color:#fff;font-size:8px;font-weight:900;letter-spacing:1px;">YTD P&amp;L</div>
-        <div style="color:#fff;font-size:7px;opacity:0.85;margin-bottom:2px;">Dashboard</div>
-        <div id="ytd-amount" style="font-size:14px;font-weight:900;color:#fff;">$0</div>
-        <div id="ytd-count" style="font-size:8px;color:#fff;opacity:0.85;">0 trades</div>
+      <div id="ytd-badge" class="hdr-badge" style="background:var(--muted);border:2mm solid #fff;">
+        <div style="color:#000;font-size:16px;font-weight:900;letter-spacing:1px;">YTD P&amp;L</div>
+        <div style="color:#000;font-size:14px;opacity:0.85;margin-bottom:2px;">Dashboard</div>
+        <div id="ytd-amount" style="font-size:28px;font-weight:900;color:#000;">$0</div>
+        <div id="ytd-count" style="font-size:16px;color:#000;opacity:0.85;">0 trades</div>
       </div>
 
       <!-- Instinct P&L badge - solid purple -->
-      <div id="instinct-ytd-badge" class="hdr-badge" style="background:var(--purple);border-color:var(--purple);">
-        <div style="color:#fff;font-size:8px;font-weight:900;letter-spacing:1px;">YTD P&amp;L</div>
-        <div style="color:#fff;font-size:7px;opacity:0.85;margin-bottom:2px;">Instinct</div>
-        <div id="instinct-ytd-amount" style="font-size:14px;font-weight:900;color:#fff;">$0</div>
-        <div id="instinct-ytd-count" style="font-size:8px;color:#fff;opacity:0.85;">0 trades</div>
+      <div id="instinct-ytd-badge" class="hdr-badge" style="background:var(--purple);border:2mm solid #fff;">
+        <div style="color:#000;font-size:16px;font-weight:900;letter-spacing:1px;">YTD P&amp;L</div>
+        <div style="color:#000;font-size:14px;opacity:0.85;margin-bottom:2px;">Instinct</div>
+        <div id="instinct-ytd-amount" style="font-size:28px;font-weight:900;color:#000;">$0</div>
+        <div id="instinct-ytd-count" style="font-size:16px;color:#000;opacity:0.85;">0 trades</div>
       </div>
 
       <!-- Dashboard W/L badge - solid green -->
-      <div id="dash-wl-badge" class="hdr-badge" style="background:var(--green);border-color:var(--green);">
-        <div style="color:#fff;font-size:8px;font-weight:900;letter-spacing:1px;">DASHBOARD W/L</div>
-        <div id="dash-wl-pct" style="font-size:14px;font-weight:900;color:#fff;">—</div>
-        <div id="dash-wl-rec" style="font-size:8px;color:#fff;opacity:0.85;">0W / 0L</div>
+      <div id="dash-wl-badge" class="hdr-badge" style="background:var(--green);border:2mm solid #fff;">
+        <div style="color:#000;font-size:16px;font-weight:900;letter-spacing:1px;">DASHBOARD W/L</div>
+        <div id="dash-wl-pct" style="font-size:28px;font-weight:900;color:#000;">—</div>
+        <div id="dash-wl-rec" style="font-size:16px;color:#000;opacity:0.85;">0W / 0L</div>
       </div>
 
       <!-- Instinct W/L badge - solid purple -->
-      <div id="inst-wl-badge" class="hdr-badge" style="background:var(--purple);border-color:var(--purple);">
-        <div style="color:#fff;font-size:8px;font-weight:900;letter-spacing:1px;">INSTINCT W/L</div>
-        <div id="inst-wl-pct" style="font-size:14px;font-weight:900;color:#fff;">—</div>
-        <div id="inst-wl-rec" style="font-size:8px;color:#fff;opacity:0.85;">0W / 0L</div>
+      <div id="inst-wl-badge" class="hdr-badge" style="background:var(--purple);border:2mm solid #fff;">
+        <div style="color:#000;font-size:16px;font-weight:900;letter-spacing:1px;">INSTINCT W/L</div>
+        <div id="inst-wl-pct" style="font-size:28px;font-weight:900;color:#000;">—</div>
+        <div id="inst-wl-rec" style="font-size:16px;color:#000;opacity:0.85;">0W / 0L</div>
       </div>
 
       <div style="display:flex;flex-direction:column;gap:4px;">
-        <div id="h-mode" style="padding:3px 8px;border-radius:14px;font-size:9px;font-weight:900;background:var(--orange);border:1px solid var(--orange);color:#fff;text-align:center;">CONNECTING</div>
-        <div id="countdown" style="padding:3px 8px;border-radius:14px;font-size:9px;font-weight:900;background:var(--blue);border:1px solid var(--blue);color:#fff;text-align:center;">Outside hours</div>
-        <div id="manual-counter" style="padding:3px 8px;border-radius:14px;font-size:9px;font-weight:900;background:var(--green);border:1px solid var(--green);color:#fff;text-align:center;">Manual: 18 left</div>
-        <div id="api-calls-left" style="padding:3px 8px;border-radius:14px;font-size:9px;font-weight:900;background:var(--muted);border:1px solid var(--muted);color:#fff;text-align:center;">API: 0/300</div>
+        <div id="h-mode" style="padding:3px 8px;border-radius:14px;font-size:9px;font-weight:900;background:var(--orange);border:1px solid var(--orange);color:#000;text-align:center;">CONNECTING</div>
+        <div id="countdown" style="padding:3px 8px;border-radius:14px;font-size:9px;font-weight:900;background:var(--blue);border:1px solid var(--blue);color:#000;text-align:center;">Outside hours</div>
+        <div id="manual-counter" style="padding:3px 8px;border-radius:14px;font-size:9px;font-weight:900;background:var(--green);border:1px solid var(--green);color:#000;text-align:center;">Manual: 18 left</div>
+        <div id="api-calls-left" style="padding:3px 8px;border-radius:14px;font-size:9px;font-weight:900;background:var(--muted);border:1px solid var(--muted);color:#000;text-align:center;">API: 0/300</div>
       </div>
       <button class="fetch-btn" id="fetch-btn" onclick="manualFetch()">Refresh (18)</button>
     </div>
@@ -188,8 +188,8 @@ body{background:var(--bg);color:var(--text);font-family:'SF Mono','Fira Code',mo
         <div style="color:var(--green);font-weight:900;font-size:10px;letter-spacing:1.5px;margin-bottom:6px;">ENTER A TRADE</div>
         <div style="color:var(--muted);font-size:9px;margin-bottom:10px;">Tap I'M IN and enter what you paid on Robinhood.</div>
         <div style="display:flex;gap:8px;flex-wrap:wrap;">
-          <button onclick="enterTrade('near')" style="flex:1;background:var(--green);color:#fff;font-weight:900;font-size:12px;padding:11px;border-radius:9px;border:none;cursor:pointer;font-family:inherit;">I'M IN — Near-term</button>
-          <button onclick="enterTrade('swing')" style="flex:1;background:var(--purple);color:#fff;font-weight:900;font-size:12px;padding:11px;border-radius:9px;border:none;cursor:pointer;font-family:inherit;">I'M IN — Swing</button>
+          <button onclick="enterTrade('near')" style="flex:1;background:var(--green);color:#000;font-weight:900;font-size:12px;padding:11px;border-radius:9px;border:none;cursor:pointer;font-family:inherit;">I'M IN — Near-term</button>
+          <button onclick="enterTrade('swing')" style="flex:1;background:var(--purple);color:#000;font-weight:900;font-size:12px;padding:11px;border-radius:9px;border:none;cursor:pointer;font-family:inherit;">I'M IN — Swing</button>
         </div>
       </div>
     </div>
@@ -204,15 +204,17 @@ body{background:var(--bg);color:var(--text);font-family:'SF Mono','Fira Code',mo
   <!-- FULL CHART -->
   <div id="tab-chart" class="tab">
     <div class="card" style="padding:10px 4px 4px;">
-      <div style="padding-left:10px;margin-bottom:4px;font-size:9px;color:var(--muted);font-weight:700;">TSLA 5-Min &nbsp; EMA9 &nbsp; EMA21 &nbsp; Live</div>
-      <svg id="chart-svg" viewBox="0 0 800 260"></svg>
-      <div style="border-top:1px solid var(--border);margin:2px 0;"></div>
-      <svg id="rsi-svg" viewBox="0 0 800 60"></svg>
+      <div style="padding-left:10px;margin-bottom:4px;font-size:9px;color:var(--muted);font-weight:700;">TSLA 5-Min &nbsp; EMA9 &nbsp; EMA21 &nbsp; Live &nbsp; <span style="color:var(--blue);">&larr; swipe to scroll &rarr;</span></div>
+      <div id="chart-scroll-wrap" style="overflow-x:auto;-webkit-overflow-scrolling:touch;">
+        <svg id="chart-svg"></svg>
+        <div style="border-top:1px solid var(--border);margin:2px 0;"></div>
+        <svg id="rsi-svg"></svg>
+      </div>
     </div>
     <div class="card" style="border:1px solid rgba(56,189,248,0.32);">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
         <span style="color:var(--blue);font-weight:900;font-size:9px;letter-spacing:1.5px;">AI TRADER BRIEFING</span>
-        <button id="ai-btn" onclick="runAI()" style="background:var(--blue);border:none;color:#fff;font-size:9px;padding:3px 9px;border-radius:5px;cursor:pointer;font-family:inherit;font-weight:900;">Run Now</button>
+        <button id="ai-btn" onclick="runAI()" style="background:var(--blue);border:none;color:#000;font-size:9px;padding:3px 9px;border-radius:5px;cursor:pointer;font-family:inherit;font-weight:900;">Run Now</button>
       </div>
       <p id="ai-text" style="color:var(--muted);font-size:11px;line-height:1.8;min-height:48px;">Click Run Now for your AI trader briefing.</p>
     </div>
@@ -266,7 +268,7 @@ body{background:var(--bg);color:var(--text);font-family:'SF Mono','Fira Code',mo
         <div style="font-size:13px;font-weight:900;color:var(--green);letter-spacing:1px;">OVERNIGHT SUMMARY</div>
         <div style="color:var(--muted);font-size:9px;margin-top:2px;">Full 24h awareness</div>
       </div>
-      <button onclick="manualFetch()" style="background:var(--blue);border:none;color:#fff;font-size:9px;padding:4px 10px;border-radius:6px;cursor:pointer;font-family:inherit;font-weight:900;">Refresh</button>
+      <button onclick="manualFetch()" style="background:var(--blue);border:none;color:#000;font-size:9px;padding:4px 10px;border-radius:6px;cursor:pointer;font-family:inherit;font-weight:900;">Refresh</button>
     </div>
     <div id="gap-box">
       <div id="gap-emoji">⏳</div>
@@ -432,7 +434,7 @@ function init(initialData) {
       fetchAll();
       startCountdown();
     }
-  }, 5 * 60 * 1000);
+  }, 2.5 * 60 * 1000);
   setInterval(checkSpike, 5000);
   setInterval(updateClock, 1000);
   startCountdown();
@@ -440,7 +442,7 @@ function init(initialData) {
 }
 
 function startCountdown() {
-  countdownSecs = 5 * 60;
+  countdownSecs = 2.5 * 60;
   if (countdownInterval) clearInterval(countdownInterval);
   countdownInterval = setInterval(function() {
     countdownSecs = Math.max(0, countdownSecs - 1);
@@ -569,7 +571,7 @@ function setHeader(price, chg, pct, hi, lo, prev) {
 
 function setMode(label, color) {
   var el = document.getElementById('h-mode');
-  el.textContent = label; el.style.background = color; el.style.borderColor = color; el.style.color = '#fff';
+  el.textContent = label; el.style.background = color; el.style.borderColor = color; el.style.color = '#000';
 }
 
 function updateMktStatus() {
@@ -644,7 +646,7 @@ function updateYTD() {
   var badge = document.getElementById('ytd-badge'), amt = document.getElementById('ytd-amount'), cnt = document.getElementById('ytd-count');
   if (!badge || !amt || !cnt) return;
   var col = ytdPnl > 0 ? 'var(--green)' : ytdPnl < 0 ? 'var(--red)' : 'var(--muted)';
-  badge.style.background = col; badge.style.borderColor = col;
+  badge.style.background = col;
   amt.textContent = (ytdPnl >= 0 ? '+' : '') + '$' + ytdPnl;
   cnt.textContent = ytdTrades.length + ' trade' + (ytdTrades.length !== 1 ? 's' : '');
 }
@@ -653,7 +655,7 @@ function updateInstinctYTD() {
   var badge = document.getElementById('instinct-ytd-badge'), amt = document.getElementById('instinct-ytd-amount'), cnt = document.getElementById('instinct-ytd-count');
   if (!badge || !amt || !cnt) return;
   var col = instinctPnl > 0 ? 'var(--purple)' : instinctPnl < 0 ? 'var(--red)' : 'var(--purple)';
-  badge.style.background = col; badge.style.borderColor = col;
+  badge.style.background = col;
   amt.textContent = (instinctPnl >= 0 ? '+' : '') + '$' + instinctPnl;
   cnt.textContent = instinctTrades.length + ' trade' + (instinctTrades.length !== 1 ? 's' : '');
 }
@@ -663,7 +665,7 @@ function updateWinRates() {
   if (dBadge && dPct && dRec) {
     var dT = ytdTrades.length, dW = ytdTrades.filter(function(t) { return t.pnl >= 0; }).length;
     var dCol = dT === 0 ? 'var(--green)' : Math.round(dW/dT*100) >= 76 ? 'var(--green)' : Math.round(dW/dT*100) >= 51 ? 'var(--yellow)' : 'var(--red)';
-    dBadge.style.background = dCol; dBadge.style.borderColor = dCol;
+    dBadge.style.background = dCol;
     dPct.textContent = dT === 0 ? '—' : Math.round(dW/dT*100) + '%';
     dRec.textContent = dW + 'W / ' + (dT-dW) + 'L';
   }
@@ -671,7 +673,7 @@ function updateWinRates() {
   if (iBadge && iPct && iRec) {
     var iT = instinctTrades.length, iW = instinctTrades.filter(function(t) { return t.pnl >= 0; }).length;
     var iCol = iT === 0 ? 'var(--purple)' : Math.round(iW/iT*100) >= 76 ? 'var(--purple)' : Math.round(iW/iT*100) >= 51 ? 'var(--yellow)' : 'var(--red)';
-    iBadge.style.background = iCol; iBadge.style.borderColor = iCol;
+    iBadge.style.background = iCol;
     iPct.textContent = iT === 0 ? '—' : Math.round(iW/iT*100) + '%';
     iRec.textContent = iW + 'W / ' + (iT-iW) + 'L';
   }
@@ -771,7 +773,281 @@ function getTradeRec(entryPrice, entryStock) {
   return {action: 'HOLD', reason: 'Building position — monitor indicators.', col: 'var(--muted)'};
 }
 
+// ── NEAR-TERM CARD: Stage 1 — strike/qty entry + average up/down ──
+function enterTradeNear() {
+  var suggested = opts && opts[0] ? opts[0].strike : 405;
+  var strikeStr = prompt('Strike price you bought?\n(suggested: ' + suggested + ')', String(suggested));
+  if (!strikeStr) return;
+  var strike = parseFloat(strikeStr);
+  if (!strike || strike <= 0) return;
+  var priceStr = prompt('What did you pay per contract?\n(example: 4.07)');
+  var price = parseFloat(priceStr);
+  if (!price || price <= 0) return;
+  var qtyStr = prompt('How many contracts?\n(example: 1)', '1');
+  var qty = parseInt(qtyStr);
+  if (!qty || qty <= 0) qty = 1;
+  var o = opts && opts[0];
+  tradeStates['near'] = {
+    state: 'in',
+    origStrike: strike, origPrice: price, origQty: qty,
+    avgStrike: strike, avgPrice: price, totalQty: qty,
+    entryStock: livePrice,
+    entryTime: new Date().toLocaleTimeString('en-US', {hour: '2-digit', minute: '2-digit'}),
+    entryDate: new Date().toLocaleDateString('en-US', {month: 'short', day: 'numeric'}),
+    strike: strike, expiry: o ? o.expiry : '—',
+    type: 'Near-term',
+    savedOpt: o || null
+  };
+  saveTradeData();
+  updateGlance();
+}
+
+function averageNear(direction) {
+  var t = tradeStates['near'];
+  if (!t || t.state !== 'in') return;
+  var label = direction === 'up' ? 'AVERAGE UP' : 'AVERAGE DOWN';
+  var priceStr = prompt(label + ' — what did you pay per contract for this addition?\n(example: 4.50)');
+  var price = parseFloat(priceStr);
+  if (!price || price <= 0) return;
+  var qtyStr = prompt('How many additional contracts?\n(example: 1)', '1');
+  var qty = parseInt(qtyStr);
+  if (!qty || qty <= 0) qty = 1;
+  var newTotalQty = t.totalQty + qty;
+  var newAvgPrice = +(((t.avgPrice * t.totalQty) + (price * qty)) / newTotalQty).toFixed(2);
+  t.avgPrice = newAvgPrice;
+  t.totalQty = newTotalQty;
+  saveTradeData();
+  updateGlance();
+}
+
+function renderNearCard(o) {
+  var ts = tradeStates['near'];
+  var cc = o.conf >= 75 ? 'var(--green)' : o.conf >= 50 ? 'var(--yellow)' : 'var(--orange)';
+
+  if (!ts || ts.state === 'idle') {
+    return '<div class="opt-card" style="border-color:var(--green)50;margin-bottom:10px;">'
+      + '<div style="margin-bottom:10px;"><div style="font-size:9px;font-weight:900;letter-spacing:1.5px;color:var(--green);margin-bottom:2px;">NEAR-TERM TRADE</div>'
+      + '<div style="font-size:17px;font-weight:900;">TSLA $' + o.strike + 'C</div>'
+      + '<div style="color:var(--muted);font-size:9px;margin-top:2px;">Exp ' + o.expiry + ' · ' + o.daysOut + 'd out · Conf <span style="color:' + cc + ';">' + o.conf + '%</span></div></div>'
+      + '<div class="limit-box"><div class="limit-title">SET THIS LIMIT BUY ON ROBINHOOD</div>'
+      + '<div class="grid4" style="margin-bottom:6px;">'
+      + '<div class="cell"><div class="lbl">Bid</div><div class="val" style="color:var(--red);font-size:12px;">$' + o.bid + '</div></div>'
+      + '<div class="cell"><div class="lbl">Ask</div><div class="val" style="color:var(--green);font-size:12px;">$' + o.ask + '</div></div>'
+      + '<div class="cell"><div class="lbl">Mid</div><div class="val" style="font-size:12px;">$' + o.buyIn + '</div></div>'
+      + '<div class="cell"><div class="lbl">SET LIMIT</div><div class="val" style="color:var(--blue);font-size:12px;">$' + o.limit + '</div></div></div>'
+      + '<div class="limit-instr">RH → TSLA $' + o.strike + 'C ' + o.expiry + ' → Limit Buy → $' + o.limit + ' → 1 contract → submit.</div></div>'
+      + '<div class="grid3">'
+      + '<div class="cell"><div class="lbl">Target</div><div class="val" style="color:var(--green);font-size:12px;">$' + o.target + '</div></div>'
+      + '<div class="cell"><div class="lbl">Stop</div><div class="val" style="color:var(--red);font-size:12px;">$' + o.stop + '</div></div>'
+      + '<div class="cell"><div class="lbl">R/R</div><div class="val" style="color:var(--yellow);font-size:12px;">' + ((o.target-o.buyIn)/(o.buyIn-o.stop)).toFixed(1) + 'x</div></div></div>'
+      + '</div>';
+  }
+
+  if (ts.state === 'in') {
+    var cur = livePrice && ts.entryStock ? +(ts.avgPrice + (livePrice - ts.entryStock) * 0.4).toFixed(2) : null;
+    var pnlD = cur ? +((cur - ts.avgPrice) * 100 * ts.totalQty).toFixed(0) : null;
+    var pnlP = cur ? +((cur - ts.avgPrice) / ts.avgPrice * 100).toFixed(1) : null;
+    var pCol = pnlD >= 0 ? 'var(--green)' : 'var(--red)';
+    var rec = getTradeRec(ts.avgPrice, ts.entryStock);
+    var cardBg = pnlD > 0 ? 'rgba(0,229,160,0.06)' : pnlD < 0 ? 'rgba(255,61,90,0.06)' : 'rgba(56,189,248,0.06)';
+    var cardBd = pnlD > 0 ? 'var(--green)' : pnlD < 0 ? 'var(--red)' : 'var(--blue)';
+    var showingAvg = ts.totalQty !== ts.origQty || ts.avgPrice !== ts.origPrice;
+    return '<div class="opt-card" style="background:' + cardBg + ';border-color:' + cardBd + ';margin-bottom:10px;">'
+      + '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">'
+      + '<div><div style="font-size:9px;font-weight:900;color:var(--green);">NEAR-TERM · IN TRADE</div>'
+      + '<div style="font-size:17px;font-weight:900;">TSLA $' + ts.origStrike + 'C</div></div>'
+      + '<div style="text-align:center;"><div style="color:var(--muted);font-size:8px;margin-bottom:2px;">LIVE P&L</div>'
+      + '<div style="font-size:24px;font-weight:900;color:' + pCol + ';">' + (pnlP !== null ? (pnlP >= 0 ? '+' : '') + pnlP + '%' : '—') + '</div>'
+      + '<div style="font-size:13px;font-weight:700;color:' + pCol + ';">' + (pnlD !== null ? (pnlD >= 0 ? '+' : '') + '$' + pnlD : '') + '</div></div></div>'
+      + '<div style="background:var(--surface);border-radius:8px;padding:8px;margin-bottom:8px;">'
+      + '<div style="font-size:9px;color:var(--muted);">Entered ' + ts.entryTime + ' · $' + ts.origStrike + 'C @ $' + ts.origPrice + ' &times; ' + ts.origQty + '</div>'
+      + (showingAvg ? '<div style="font-size:11px;color:var(--text);font-weight:700;margin-top:4px;">Average: $' + ts.avgPrice + ' &times; ' + ts.totalQty + ' total contracts</div>' : '')
+      + '</div>'
+      + '<div style="background:var(--surface);border-radius:8px;padding:8px;margin-bottom:8px;">'
+      + '<div style="font-size:8px;color:var(--muted);margin-bottom:5px;letter-spacing:1px;">PROFIT LEVELS</div>'
+      + '<div style="display:flex;gap:4px;">'
+      + [25,50,75,100].map(function(lvlPct, li) {
+          var cols = ['var(--yellow)','var(--orange)','var(--green)','var(--green)'];
+          var hit = pnlP !== null && pnlP >= lvlPct;
+          return '<div style="flex:1;text-align:center;background:' + (hit ? cols[li] + '30' : 'var(--panel)') + ';border:1px solid ' + (hit ? cols[li] : 'var(--border)') + ';border-radius:6px;padding:5px 2px;">'
+            + '<div style="font-size:8px;font-weight:700;color:' + (hit ? cols[li] : 'var(--muted)') + ';">' + lvlPct + '%</div>'
+            + '<div style="font-size:10px;">' + (hit ? '✓' : '○') + '</div></div>';
+        }).join('')
+      + '</div></div>'
+      + '<div style="background:' + rec.col + '18;border:2px solid ' + rec.col + ';border-radius:10px;padding:11px;margin-bottom:8px;text-align:center;">'
+      + '<div style="font-size:15px;font-weight:900;color:' + rec.col + ';">' + rec.action + '</div>'
+      + '<div style="font-size:9px;color:var(--muted);margin-top:2px;">' + rec.reason + '</div></div>'
+      + '<div class="grid3" style="margin-bottom:8px;">'
+      + '<div class="cell"><div class="lbl">Avg Paid</div><div class="val" style="font-size:12px;">$' + ts.avgPrice + '</div></div>'
+      + '<div class="cell"><div class="lbl">Est. Now</div><div class="val" style="color:' + pCol + ';font-size:12px;">' + (cur ? '$' + cur : '—') + '</div></div>'
+      + '<div class="cell"><div class="lbl">Contracts</div><div class="val" style="font-size:12px;">' + ts.totalQty + '</div></div></div>'
+      + '<div style="display:flex;gap:6px;margin-bottom:6px;">'
+      + '<button onclick="averageNear(\'up\')" style="flex:1;background:var(--blue);color:#000;font-weight:900;font-size:11px;padding:9px;border-radius:8px;border:none;cursor:pointer;font-family:inherit;">AVERAGE UP</button>'
+      + '<button onclick="averageNear(\'down\')" style="flex:1;background:var(--yellow);color:#000;font-weight:900;font-size:11px;padding:9px;border-radius:8px;border:none;cursor:pointer;font-family:inherit;">AVERAGE DOWN</button>'
+      + '</div>'
+      + '<button class="action-btn" onclick="sellTrade(\'near\')" style="background:var(--orange);color:#000;">I SOLD — TAP TO RECORD EXIT PRICE</button>'
+      + '</div>';
+  }
+
+  if (ts.state === 'closed') {
+    var win = ts.pnl >= 0;
+    return '<div class="opt-card" style="background:' + (win ? 'rgba(0,229,160,0.08)' : 'rgba(255,61,90,0.08)') + ';border-color:' + (win ? 'var(--green)' : 'var(--red)') + ';margin-bottom:10px;">'
+      + '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">'
+      + '<div><div style="font-size:9px;font-weight:900;color:' + (win ? 'var(--green)' : 'var(--red)') + ';">NEAR-TERM · ' + (win ? 'WIN' : 'LOSS') + '</div>'
+      + '<div style="font-size:17px;font-weight:900;">TSLA $' + ts.origStrike + 'C</div>'
+      + '<div style="color:var(--muted);font-size:9px;">' + ts.entryDate + ' · ' + ts.entryTime + ' → ' + ts.exitTime + '</div></div>'
+      + '<div style="text-align:center;"><div style="color:var(--muted);font-size:8px;margin-bottom:2px;">FINAL P&L</div>'
+      + '<div style="font-size:26px;font-weight:900;color:' + (win ? 'var(--green)' : 'var(--red)') + ';">' + (ts.pnl >= 0 ? '+' : '') + '$' + ts.pnl + '</div>'
+      + '<div style="font-size:12px;font-weight:700;color:' + (win ? 'var(--green)' : 'var(--red)') + ';">' + (ts.pct >= 0 ? '+' : '') + ts.pct + '%</div></div></div>'
+      + '<div class="grid3" style="margin-bottom:10px;">'
+      + '<div class="cell"><div class="lbl">Avg Paid</div><div class="val" style="font-size:12px;">$' + ts.avgPrice + '</div></div>'
+      + '<div class="cell"><div class="lbl">Sold</div><div class="val" style="color:' + (win ? 'var(--green)' : 'var(--red)') + ';font-size:12px;">$' + ts.exitPrice + '</div></div>'
+      + '<div class="cell"><div class="lbl">Contracts</div><div class="val" style="font-size:12px;">' + ts.totalQty + '</div></div></div>'
+      + '<button class="action-btn" onclick="clearTrade(\'near\')" style="background:var(--surface);color:var(--muted);border:1px solid var(--border);">Clear — Ready for Next Trade</button>'
+      + '</div>';
+  }
+  return '';
+}
+
+// ── SWING CARD: Stage 1 — strike/qty entry + average up/down ──
+function enterTradeSwing() {
+  var suggested = opts && opts[1] ? opts[1].strike : 405;
+  var strikeStr = prompt('Strike price you bought?\n(suggested: ' + suggested + ')', String(suggested));
+  if (!strikeStr) return;
+  var strike = parseFloat(strikeStr);
+  if (!strike || strike <= 0) return;
+  var priceStr = prompt('What did you pay per contract?\n(example: 4.07)');
+  var price = parseFloat(priceStr);
+  if (!price || price <= 0) return;
+  var qtyStr = prompt('How many contracts?\n(example: 1)', '1');
+  var qty = parseInt(qtyStr);
+  if (!qty || qty <= 0) qty = 1;
+  var o = opts && opts[1];
+  tradeStates['swing'] = {
+    state: 'in',
+    origStrike: strike, origPrice: price, origQty: qty,
+    avgStrike: strike, avgPrice: price, totalQty: qty,
+    entryStock: livePrice,
+    entryTime: new Date().toLocaleTimeString('en-US', {hour: '2-digit', minute: '2-digit'}),
+    entryDate: new Date().toLocaleDateString('en-US', {month: 'short', day: 'numeric'}),
+    strike: strike, expiry: o ? o.expiry : '—',
+    type: 'Swing',
+    savedOpt: o || null
+  };
+  saveTradeData();
+  updateGlance();
+}
+
+function averageSwing(direction) {
+  var t = tradeStates['swing'];
+  if (!t || t.state !== 'in') return;
+  var label = direction === 'up' ? 'AVERAGE UP' : 'AVERAGE DOWN';
+  var priceStr = prompt(label + ' — what did you pay per contract for this addition?\n(example: 4.50)');
+  var price = parseFloat(priceStr);
+  if (!price || price <= 0) return;
+  var qtyStr = prompt('How many additional contracts?\n(example: 1)', '1');
+  var qty = parseInt(qtyStr);
+  if (!qty || qty <= 0) qty = 1;
+  var newTotalQty = t.totalQty + qty;
+  var newAvgPrice = +(((t.avgPrice * t.totalQty) + (price * qty)) / newTotalQty).toFixed(2);
+  t.avgPrice = newAvgPrice;
+  t.totalQty = newTotalQty;
+  saveTradeData();
+  updateGlance();
+}
+
+function renderSwingCard(o) {
+  var ts = tradeStates['swing'];
+  var cc = o.conf >= 75 ? 'var(--green)' : o.conf >= 50 ? 'var(--yellow)' : 'var(--orange)';
+
+  if (!ts || ts.state === 'idle') {
+    return '<div class="opt-card" style="border-color:var(--purple)50;margin-bottom:10px;">'
+      + '<div style="margin-bottom:10px;"><div style="font-size:9px;font-weight:900;letter-spacing:1.5px;color:var(--purple);margin-bottom:2px;">SWING TRADE</div>'
+      + '<div style="font-size:17px;font-weight:900;">TSLA $' + o.strike + 'C</div>'
+      + '<div style="color:var(--muted);font-size:9px;margin-top:2px;">Exp ' + o.expiry + ' · ' + o.daysOut + 'd out · Conf <span style="color:' + cc + ';">' + o.conf + '%</span></div></div>'
+      + '<div class="limit-box"><div class="limit-title">SET THIS LIMIT BUY ON ROBINHOOD</div>'
+      + '<div class="grid4" style="margin-bottom:6px;">'
+      + '<div class="cell"><div class="lbl">Bid</div><div class="val" style="color:var(--red);font-size:12px;">$' + o.bid + '</div></div>'
+      + '<div class="cell"><div class="lbl">Ask</div><div class="val" style="color:var(--green);font-size:12px;">$' + o.ask + '</div></div>'
+      + '<div class="cell"><div class="lbl">Mid</div><div class="val" style="font-size:12px;">$' + o.buyIn + '</div></div>'
+      + '<div class="cell"><div class="lbl">SET LIMIT</div><div class="val" style="color:var(--blue);font-size:12px;">$' + o.limit + '</div></div></div>'
+      + '<div class="limit-instr">RH → TSLA $' + o.strike + 'C ' + o.expiry + ' → Limit Buy → $' + o.limit + ' → 1 contract → submit.</div></div>'
+      + '<div class="grid3">'
+      + '<div class="cell"><div class="lbl">Target</div><div class="val" style="color:var(--green);font-size:12px;">$' + o.target + '</div></div>'
+      + '<div class="cell"><div class="lbl">Stop</div><div class="val" style="color:var(--red);font-size:12px;">$' + o.stop + '</div></div>'
+      + '<div class="cell"><div class="lbl">R/R</div><div class="val" style="color:var(--yellow);font-size:12px;">' + ((o.target-o.buyIn)/(o.buyIn-o.stop)).toFixed(1) + 'x</div></div></div>'
+      + '</div>';
+  }
+
+  if (ts.state === 'in') {
+    var cur = livePrice && ts.entryStock ? +(ts.avgPrice + (livePrice - ts.entryStock) * 0.4).toFixed(2) : null;
+    var pnlD = cur ? +((cur - ts.avgPrice) * 100 * ts.totalQty).toFixed(0) : null;
+    var pnlP = cur ? +((cur - ts.avgPrice) / ts.avgPrice * 100).toFixed(1) : null;
+    var pCol = pnlD >= 0 ? 'var(--green)' : 'var(--red)';
+    var rec = getTradeRec(ts.avgPrice, ts.entryStock);
+    var cardBg = pnlD > 0 ? 'rgba(167,139,250,0.08)' : pnlD < 0 ? 'rgba(255,61,90,0.06)' : 'rgba(167,139,250,0.05)';
+    var cardBd = pnlD > 0 ? 'var(--purple)' : pnlD < 0 ? 'var(--red)' : 'var(--purple)';
+    var showingAvg = ts.totalQty !== ts.origQty || ts.avgPrice !== ts.origPrice;
+    return '<div class="opt-card" style="background:' + cardBg + ';border-color:' + cardBd + ';margin-bottom:10px;">'
+      + '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">'
+      + '<div><div style="font-size:9px;font-weight:900;color:var(--purple);">SWING · IN TRADE</div>'
+      + '<div style="font-size:17px;font-weight:900;">TSLA $' + ts.origStrike + 'C</div></div>'
+      + '<div style="text-align:center;"><div style="color:var(--muted);font-size:8px;margin-bottom:2px;">LIVE P&L</div>'
+      + '<div style="font-size:24px;font-weight:900;color:' + pCol + ';">' + (pnlP !== null ? (pnlP >= 0 ? '+' : '') + pnlP + '%' : '—') + '</div>'
+      + '<div style="font-size:13px;font-weight:700;color:' + pCol + ';">' + (pnlD !== null ? (pnlD >= 0 ? '+' : '') + '$' + pnlD : '') + '</div></div></div>'
+      + '<div style="background:var(--surface);border-radius:8px;padding:8px;margin-bottom:8px;">'
+      + '<div style="font-size:9px;color:var(--muted);">Entered ' + ts.entryTime + ' · $' + ts.origStrike + 'C @ $' + ts.origPrice + ' &times; ' + ts.origQty + '</div>'
+      + (showingAvg ? '<div style="font-size:11px;color:var(--text);font-weight:700;margin-top:4px;">Average: $' + ts.avgPrice + ' &times; ' + ts.totalQty + ' total contracts</div>' : '')
+      + '</div>'
+      + '<div style="background:var(--surface);border-radius:8px;padding:8px;margin-bottom:8px;">'
+      + '<div style="font-size:8px;color:var(--muted);margin-bottom:5px;letter-spacing:1px;">PROFIT LEVELS</div>'
+      + '<div style="display:flex;gap:4px;">'
+      + [25,50,75,100].map(function(lvlPct, li) {
+          var cols = ['var(--yellow)','var(--orange)','var(--green)','var(--green)'];
+          var hit = pnlP !== null && pnlP >= lvlPct;
+          return '<div style="flex:1;text-align:center;background:' + (hit ? cols[li] + '30' : 'var(--panel)') + ';border:1px solid ' + (hit ? cols[li] : 'var(--border)') + ';border-radius:6px;padding:5px 2px;">'
+            + '<div style="font-size:8px;font-weight:700;color:' + (hit ? cols[li] : 'var(--muted)') + ';">' + lvlPct + '%</div>'
+            + '<div style="font-size:10px;">' + (hit ? '✓' : '○') + '</div></div>';
+        }).join('')
+      + '</div></div>'
+      + '<div style="background:' + rec.col + '18;border:2px solid ' + rec.col + ';border-radius:10px;padding:11px;margin-bottom:8px;text-align:center;">'
+      + '<div style="font-size:15px;font-weight:900;color:' + rec.col + ';">' + rec.action + '</div>'
+      + '<div style="font-size:9px;color:var(--muted);margin-top:2px;">' + rec.reason + '</div></div>'
+      + '<div class="grid3" style="margin-bottom:8px;">'
+      + '<div class="cell"><div class="lbl">Avg Paid</div><div class="val" style="font-size:12px;">$' + ts.avgPrice + '</div></div>'
+      + '<div class="cell"><div class="lbl">Est. Now</div><div class="val" style="color:' + pCol + ';font-size:12px;">' + (cur ? '$' + cur : '—') + '</div></div>'
+      + '<div class="cell"><div class="lbl">Contracts</div><div class="val" style="font-size:12px;">' + ts.totalQty + '</div></div></div>'
+      + '<div style="display:flex;gap:6px;margin-bottom:6px;">'
+      + '<button onclick="averageSwing(\'up\')" style="flex:1;background:var(--blue);color:#000;font-weight:900;font-size:11px;padding:9px;border-radius:8px;border:none;cursor:pointer;font-family:inherit;">AVERAGE UP</button>'
+      + '<button onclick="averageSwing(\'down\')" style="flex:1;background:var(--yellow);color:#000;font-weight:900;font-size:11px;padding:9px;border-radius:8px;border:none;cursor:pointer;font-family:inherit;">AVERAGE DOWN</button>'
+      + '</div>'
+      + '<button class="action-btn" onclick="sellTrade(\'swing\')" style="background:var(--orange);color:#000;">I SOLD — TAP TO RECORD EXIT PRICE</button>'
+      + '</div>';
+  }
+
+  if (ts.state === 'closed') {
+    var win = ts.pnl >= 0;
+    return '<div class="opt-card" style="background:' + (win ? 'rgba(167,139,250,0.08)' : 'rgba(255,61,90,0.08)') + ';border-color:' + (win ? 'var(--purple)' : 'var(--red)') + ';margin-bottom:10px;">'
+      + '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">'
+      + '<div><div style="font-size:9px;font-weight:900;color:' + (win ? 'var(--purple)' : 'var(--red)') + ';">SWING · ' + (win ? 'WIN' : 'LOSS') + '</div>'
+      + '<div style="font-size:17px;font-weight:900;">TSLA $' + ts.origStrike + 'C</div>'
+      + '<div style="color:var(--muted);font-size:9px;">' + ts.entryDate + ' · ' + ts.entryTime + ' → ' + ts.exitTime + '</div></div>'
+      + '<div style="text-align:center;"><div style="color:var(--muted);font-size:8px;margin-bottom:2px;">FINAL P&L</div>'
+      + '<div style="font-size:26px;font-weight:900;color:' + (win ? 'var(--purple)' : 'var(--red)') + ';">' + (ts.pnl >= 0 ? '+' : '') + '$' + ts.pnl + '</div>'
+      + '<div style="font-size:12px;font-weight:700;color:' + (win ? 'var(--purple)' : 'var(--red)') + ';">' + (ts.pct >= 0 ? '+' : '') + ts.pct + '%</div></div></div>'
+      + '<div class="grid3" style="margin-bottom:10px;">'
+      + '<div class="cell"><div class="lbl">Avg Paid</div><div class="val" style="font-size:12px;">$' + ts.avgPrice + '</div></div>'
+      + '<div class="cell"><div class="lbl">Sold</div><div class="val" style="color:' + (win ? 'var(--purple)' : 'var(--red)') + ';font-size:12px;">$' + ts.exitPrice + '</div></div>'
+      + '<div class="cell"><div class="lbl">Contracts</div><div class="val" style="font-size:12px;">' + ts.totalQty + '</div></div></div>'
+      + '<button class="action-btn" onclick="clearTrade(\'swing\')" style="background:var(--surface);color:var(--muted);border:1px solid var(--border);">Clear — Ready for Next Trade</button>'
+      + '</div>';
+  }
+  return '';
+}
+
 function renderOpt(o, i) {
+  if (i === 0) return renderNearCard(o);
+  if (i === 1) return renderSwingCard(o);
   var key = i === 0 ? 'near' : 'swing';
   var swing = i === 1;
   var ac = swing ? 'var(--purple)' : 'var(--green)';
@@ -829,7 +1105,7 @@ function renderOpt(o, i) {
       + '<div class="cell"><div class="lbl">Paid</div><div class="val" style="font-size:12px;">$' + ts.entryPrice + '</div></div>'
       + '<div class="cell"><div class="lbl">Est. Now</div><div class="val" style="color:' + pCol + ';font-size:12px;">' + (cur ? '$' + cur : '—') + '</div></div>'
       + '<div class="cell"><div class="lbl">Stock In</div><div class="val" style="font-size:12px;">$' + (ts.entryStock ? ts.entryStock.toFixed(2) : '—') + '</div></div></div>'
-      + '<button class="action-btn" onclick="sellTrade(\'' + key + '\')" style="background:var(--orange);color:#fff;">I SOLD — TAP TO RECORD EXIT PRICE</button>'
+      + '<button class="action-btn" onclick="sellTrade(\'' + key + '\')" style="background:var(--orange);color:#000;">I SOLD — TAP TO RECORD EXIT PRICE</button>'
       + '</div>';
   }
   if (ts.state === 'closed') {
@@ -853,6 +1129,8 @@ function renderOpt(o, i) {
 }
 
 function enterTrade(key) {
+  if (key === 'near') { enterTradeNear(); return; }
+  if (key === 'swing') { enterTradeSwing(); return; }
   var priceStr = prompt('What did you pay per contract on Robinhood?\n(example: 4.07)');
   var price = parseFloat(priceStr);
   if (!price || price <= 0) return;
@@ -876,6 +1154,30 @@ function sellTrade(key) {
   if (!price || price <= 0) return;
   var t = tradeStates[key];
   if (!t) return;
+  if (key === 'near') {
+    var pnlNear = +((price - t.avgPrice) * 100 * t.totalQty).toFixed(0);
+    var pctNear = +((price - t.avgPrice) / t.avgPrice * 100).toFixed(1);
+    tradeStates[key] = {state: 'closed', origStrike: t.origStrike, origPrice: t.origPrice, origQty: t.origQty, avgPrice: t.avgPrice, totalQty: t.totalQty, entryStock: t.entryStock, entryTime: t.entryTime, entryDate: t.entryDate, exitTime: new Date().toLocaleTimeString('en-US', {hour: '2-digit', minute: '2-digit'}), exitPrice: price, pnl: pnlNear, pct: pctNear, strike: t.strike, expiry: t.expiry, type: t.type};
+    ytdTrades.push({date: new Date().toLocaleDateString(), type: t.type, entryPrice: t.avgPrice, exitPrice: price, pnl: pnlNear, pct: pctNear});
+    ytdPnl = ytdTrades.reduce(function(s,tr) { return s+(tr.pnl||0); }, 0);
+    saveTradeData();
+    updateGlance();
+    updateYTD();
+    updateWinRates();
+    return;
+  }
+  if (key === 'swing') {
+    var pnlSwing = +((price - t.avgPrice) * 100 * t.totalQty).toFixed(0);
+    var pctSwing = +((price - t.avgPrice) / t.avgPrice * 100).toFixed(1);
+    tradeStates[key] = {state: 'closed', origStrike: t.origStrike, origPrice: t.origPrice, origQty: t.origQty, avgPrice: t.avgPrice, totalQty: t.totalQty, entryStock: t.entryStock, entryTime: t.entryTime, entryDate: t.entryDate, exitTime: new Date().toLocaleTimeString('en-US', {hour: '2-digit', minute: '2-digit'}), exitPrice: price, pnl: pnlSwing, pct: pctSwing, strike: t.strike, expiry: t.expiry, type: t.type};
+    ytdTrades.push({date: new Date().toLocaleDateString(), type: t.type, entryPrice: t.avgPrice, exitPrice: price, pnl: pnlSwing, pct: pctSwing});
+    ytdPnl = ytdTrades.reduce(function(s,tr) { return s+(tr.pnl||0); }, 0);
+    saveTradeData();
+    updateGlance();
+    updateYTD();
+    updateWinRates();
+    return;
+  }
   var pnl = +((price - t.entryPrice) * 100).toFixed(0);
   var pct = +((price - t.entryPrice) / t.entryPrice * 100).toFixed(1);
   tradeStates[key] = {state: 'closed', entryPrice: t.entryPrice, entryStock: t.entryStock, entryTime: t.entryTime, entryDate: t.entryDate, exitTime: new Date().toLocaleTimeString('en-US', {hour: '2-digit', minute: '2-digit'}), exitPrice: price, pnl: pnl, pct: pct, strike: t.strike, expiry: t.expiry, type: t.type};
@@ -893,12 +1195,45 @@ function clearTrade(key) {
   updateGlance();
 }
 
+// ── INSTINCT CARD: Stage 1 — strike/qty entry + average up/down ──
 function enterInstinct() {
-  var strike = prompt('What strike price did you buy?\n(example: 405)');
-  if (!strike) return;
-  var price = parseFloat(prompt('What did you pay per contract?\n(example: 4.07)'));
+  var strikeStr = prompt('What strike price did you buy?\n(example: 405)');
+  if (!strikeStr) return;
+  var strike = parseFloat(strikeStr);
+  if (!strike || strike <= 0) return;
+  var priceStr = prompt('What did you pay per contract?\n(example: 4.07)');
+  var price = parseFloat(priceStr);
   if (!price || price <= 0) return;
-  instinctState = {state: 'in', strike: parseFloat(strike), entryPrice: price, entryStock: livePrice, entryTime: new Date().toLocaleTimeString('en-US', {hour: '2-digit', minute: '2-digit'}), entryDate: new Date().toLocaleDateString('en-US', {month: 'short', day: 'numeric'})};
+  var qtyStr = prompt('How many contracts?\n(example: 1)', '1');
+  var qty = parseInt(qtyStr);
+  if (!qty || qty <= 0) qty = 1;
+  instinctState = {
+    state: 'in',
+    origStrike: strike, origPrice: price, origQty: qty,
+    avgStrike: strike, avgPrice: price, totalQty: qty,
+    entryStock: livePrice,
+    entryTime: new Date().toLocaleTimeString('en-US', {hour: '2-digit', minute: '2-digit'}),
+    entryDate: new Date().toLocaleDateString('en-US', {month: 'short', day: 'numeric'}),
+    strike: strike
+  };
+  saveTradeData();
+  renderInstinctCard();
+}
+
+function averageInstinct(direction) {
+  var t = instinctState;
+  if (!t || t.state !== 'in') return;
+  var label = direction === 'up' ? 'AVERAGE UP' : 'AVERAGE DOWN';
+  var priceStr = prompt(label + ' — what did you pay per contract for this addition?\n(example: 4.50)');
+  var price = parseFloat(priceStr);
+  if (!price || price <= 0) return;
+  var qtyStr = prompt('How many additional contracts?\n(example: 1)', '1');
+  var qty = parseInt(qtyStr);
+  if (!qty || qty <= 0) qty = 1;
+  var newTotalQty = t.totalQty + qty;
+  var newAvgPrice = +(((t.avgPrice * t.totalQty) + (price * qty)) / newTotalQty).toFixed(2);
+  t.avgPrice = newAvgPrice;
+  t.totalQty = newTotalQty;
   saveTradeData();
   renderInstinctCard();
 }
@@ -908,11 +1243,11 @@ function sellInstinct() {
   var price = parseFloat(priceStr);
   if (!price || price <= 0) return;
   var t = instinctState;
-  var pnl = +((price - t.entryPrice) * 100).toFixed(0);
-  var pct = +((price - t.entryPrice) / t.entryPrice * 100).toFixed(1);
-  instinctState = {state: 'closed', strike: t.strike, entryPrice: t.entryPrice, entryStock: t.entryStock, entryTime: t.entryTime, entryDate: t.entryDate, exitTime: new Date().toLocaleTimeString('en-US', {hour: '2-digit', minute: '2-digit'}), exitPrice: price, pnl: pnl, pct: pct};
-  instinctTrades.push({date: new Date().toLocaleDateString(), strike: t.strike, entryPrice: t.entryPrice, exitPrice: price, pnl: pnl, pct: pct});
-  instinctPnl = instinctTrades.reduce(function(s,t) { return s+(t.pnl||0); }, 0);
+  var pnl = +((price - t.avgPrice) * 100 * t.totalQty).toFixed(0);
+  var pct = +((price - t.avgPrice) / t.avgPrice * 100).toFixed(1);
+  instinctState = {state: 'closed', origStrike: t.origStrike, origPrice: t.origPrice, origQty: t.origQty, avgPrice: t.avgPrice, totalQty: t.totalQty, strike: t.strike, entryStock: t.entryStock, entryTime: t.entryTime, entryDate: t.entryDate, exitTime: new Date().toLocaleTimeString('en-US', {hour: '2-digit', minute: '2-digit'}), exitPrice: price, pnl: pnl, pct: pct};
+  instinctTrades.push({date: new Date().toLocaleDateString(), strike: t.strike, entryPrice: t.avgPrice, exitPrice: price, pnl: pnl, pct: pct});
+  instinctPnl = instinctTrades.reduce(function(s,tr) { return s+(tr.pnl||0); }, 0);
   saveTradeData();
   renderInstinctCard();
   updateInstinctYTD();
@@ -933,25 +1268,29 @@ function renderInstinctCard() {
     el.innerHTML = '<div style="background:rgba(167,139,250,0.06);border:2px solid rgba(167,139,250,0.4);border-radius:12px;padding:14px;margin-top:4px;">'
       + '<div style="font-size:9px;font-weight:900;letter-spacing:1.5px;color:var(--purple);margin-bottom:4px;">INSTINCT TRADE</div>'
       + '<div style="color:var(--muted);font-size:10px;margin-bottom:10px;">Your gut says buy — record it here and compare against dashboard signals.</div>'
-      + '<button class="action-btn" onclick="enterInstinct()" style="background:var(--purple);color:#fff;">INSTINCT — I\'M IN</button>'
+      + '<button class="action-btn" onclick="enterInstinct()" style="background:var(--purple);color:#000;">INSTINCT — I\'M IN</button>'
       + '</div>';
     return;
   }
   if (ts.state === 'in') {
-    var cur = livePrice && ts.entryStock ? +(ts.entryPrice + (livePrice - ts.entryStock) * 0.4).toFixed(2) : null;
-    var pnlD = cur ? +((cur - ts.entryPrice) * 100).toFixed(0) : null;
-    var pnlP = cur ? +((cur - ts.entryPrice) / ts.entryPrice * 100).toFixed(1) : null;
+    var cur = livePrice && ts.entryStock ? +(ts.avgPrice + (livePrice - ts.entryStock) * 0.4).toFixed(2) : null;
+    var pnlD = cur ? +((cur - ts.avgPrice) * 100 * ts.totalQty).toFixed(0) : null;
+    var pnlP = cur ? +((cur - ts.avgPrice) / ts.avgPrice * 100).toFixed(1) : null;
     var pCol = pnlD >= 0 ? 'var(--green)' : 'var(--red)';
-    var rec = getTradeRec(ts.entryPrice, ts.entryStock);
+    var rec = getTradeRec(ts.avgPrice, ts.entryStock);
     var cardBg = pnlD > 0 ? 'rgba(167,139,250,0.08)' : pnlD < 0 ? 'rgba(255,61,90,0.06)' : 'rgba(167,139,250,0.06)';
+    var showingAvg = ts.totalQty !== ts.origQty || ts.avgPrice !== ts.origPrice;
     el.innerHTML = '<div style="background:' + cardBg + ';border:2px solid var(--purple);border-radius:12px;padding:14px;margin-top:4px;">'
-      + '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">'
+      + '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">'
       + '<div><div style="font-size:9px;font-weight:900;color:var(--purple);">INSTINCT TRADE · IN</div>'
-      + '<div style="font-size:17px;font-weight:900;">TSLA $' + ts.strike + 'C</div>'
-      + '<div style="color:var(--muted);font-size:9px;">Entered ' + ts.entryTime + ' · Paid $' + ts.entryPrice + '</div></div>'
+      + '<div style="font-size:17px;font-weight:900;">TSLA $' + ts.origStrike + 'C</div></div>'
       + '<div style="text-align:center;"><div style="color:var(--muted);font-size:8px;margin-bottom:2px;">LIVE P&L</div>'
       + '<div style="font-size:24px;font-weight:900;color:' + pCol + ';">' + (pnlP !== null ? (pnlP >= 0 ? '+' : '') + pnlP + '%' : '—') + '</div>'
       + '<div style="font-size:13px;font-weight:700;color:' + pCol + ';">' + (pnlD !== null ? (pnlD >= 0 ? '+' : '') + '$' + pnlD : '') + '</div></div></div>'
+      + '<div style="background:var(--surface);border-radius:8px;padding:8px;margin-bottom:8px;">'
+      + '<div style="font-size:9px;color:var(--muted);">Entered ' + ts.entryTime + ' · $' + ts.origStrike + 'C @ $' + ts.origPrice + ' &times; ' + ts.origQty + '</div>'
+      + (showingAvg ? '<div style="font-size:11px;color:var(--text);font-weight:700;margin-top:4px;">Average: $' + ts.avgPrice + ' &times; ' + ts.totalQty + ' total contracts</div>' : '')
+      + '</div>'
       + '<div style="background:var(--surface);border-radius:8px;padding:8px;margin-bottom:8px;">'
       + '<div style="font-size:8px;color:var(--muted);margin-bottom:5px;letter-spacing:1px;">PROFIT LEVELS</div>'
       + '<div style="display:flex;gap:4px;">'
@@ -966,11 +1305,15 @@ function renderInstinctCard() {
       + '<div style="background:' + rec.col + '18;border:2px solid ' + rec.col + ';border-radius:10px;padding:11px;margin-bottom:8px;text-align:center;">'
       + '<div style="font-size:15px;font-weight:900;color:' + rec.col + ';">' + rec.action + '</div>'
       + '<div style="font-size:9px;color:var(--muted);margin-top:2px;">' + rec.reason + '</div></div>'
-      + '<div class="grid3" style="margin-bottom:10px;">'
-      + '<div class="cell"><div class="lbl">Paid</div><div class="val" style="font-size:12px;">$' + ts.entryPrice + '</div></div>'
+      + '<div class="grid3" style="margin-bottom:8px;">'
+      + '<div class="cell"><div class="lbl">Avg Paid</div><div class="val" style="font-size:12px;">$' + ts.avgPrice + '</div></div>'
       + '<div class="cell"><div class="lbl">Est. Now</div><div class="val" style="color:' + pCol + ';font-size:12px;">' + (cur ? '$' + cur : '—') + '</div></div>'
-      + '<div class="cell"><div class="lbl">Stock In</div><div class="val" style="font-size:12px;">$' + (ts.entryStock ? ts.entryStock.toFixed(2) : '—') + '</div></div></div>'
-      + '<button class="action-btn" onclick="sellInstinct()" style="background:var(--orange);color:#fff;">I SOLD — TAP TO RECORD EXIT PRICE</button>'
+      + '<div class="cell"><div class="lbl">Contracts</div><div class="val" style="font-size:12px;">' + ts.totalQty + '</div></div></div>'
+      + '<div style="display:flex;gap:6px;margin-bottom:6px;">'
+      + '<button onclick="averageInstinct(\'up\')" style="flex:1;background:var(--blue);color:#000;font-weight:900;font-size:11px;padding:9px;border-radius:8px;border:none;cursor:pointer;font-family:inherit;">AVERAGE UP</button>'
+      + '<button onclick="averageInstinct(\'down\')" style="flex:1;background:var(--yellow);color:#000;font-weight:900;font-size:11px;padding:9px;border-radius:8px;border:none;cursor:pointer;font-family:inherit;">AVERAGE DOWN</button>'
+      + '</div>'
+      + '<button class="action-btn" onclick="sellInstinct()" style="background:var(--orange);color:#000;">I SOLD — TAP TO RECORD EXIT PRICE</button>'
       + '</div>';
     return;
   }
@@ -979,15 +1322,15 @@ function renderInstinctCard() {
     el.innerHTML = '<div style="background:' + (win ? 'rgba(167,139,250,0.08)' : 'rgba(255,61,90,0.08)') + ';border:2px solid ' + (win ? 'var(--purple)' : 'var(--red)') + ';border-radius:12px;padding:14px;margin-top:4px;">'
       + '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">'
       + '<div><div style="font-size:9px;font-weight:900;color:' + (win ? 'var(--purple)' : 'var(--red)') + ';">INSTINCT · ' + (win ? 'WIN' : 'LOSS') + '</div>'
-      + '<div style="font-size:17px;font-weight:900;">TSLA $' + ts.strike + 'C</div>'
+      + '<div style="font-size:17px;font-weight:900;">TSLA $' + ts.origStrike + 'C</div>'
       + '<div style="color:var(--muted);font-size:9px;">' + ts.entryDate + ' · ' + ts.entryTime + ' → ' + ts.exitTime + '</div></div>'
       + '<div style="text-align:center;"><div style="color:var(--muted);font-size:8px;margin-bottom:2px;">FINAL P&L</div>'
       + '<div style="font-size:26px;font-weight:900;color:' + (win ? 'var(--purple)' : 'var(--red)') + ';">' + (ts.pnl >= 0 ? '+' : '') + '$' + ts.pnl + '</div>'
       + '<div style="font-size:12px;font-weight:700;color:' + (win ? 'var(--purple)' : 'var(--red)') + ';">' + (ts.pct >= 0 ? '+' : '') + ts.pct + '%</div></div></div>'
       + '<div class="grid3" style="margin-bottom:10px;">'
-      + '<div class="cell"><div class="lbl">Paid</div><div class="val" style="font-size:12px;">$' + ts.entryPrice + '</div></div>'
+      + '<div class="cell"><div class="lbl">Avg Paid</div><div class="val" style="font-size:12px;">$' + ts.avgPrice + '</div></div>'
       + '<div class="cell"><div class="lbl">Sold</div><div class="val" style="color:' + (win ? 'var(--purple)' : 'var(--red)') + ';font-size:12px;">$' + ts.exitPrice + '</div></div>'
-      + '<div class="cell"><div class="lbl">P&L</div><div class="val" style="color:' + (win ? 'var(--purple)' : 'var(--red)') + ';font-size:12px;">' + (ts.pnl >= 0 ? '+' : '') + '$' + ts.pnl + '</div></div></div>'
+      + '<div class="cell"><div class="lbl">Contracts</div><div class="val" style="font-size:12px;">' + ts.totalQty + '</div></div></div>'
       + '<button class="action-btn" onclick="clearInstinct()" style="background:var(--surface);color:var(--muted);border:1px solid var(--border);">Clear — Ready for Next Instinct Trade</button>'
       + '</div>';
   }
@@ -996,33 +1339,52 @@ function renderInstinctCard() {
 function drawChart() {
   var svg = document.getElementById('chart-svg'), rsvg = document.getElementById('rsi-svg');
   if (!candles.length) return;
-  var W=800,H=260,P={t:10,b:22,l:60,r:18};
-  var cW=W-P.l-P.r,cH=H-P.t-P.b,n=Math.min(candles.length,52),sl=candles.slice(-n);
+  var CANDLE_W = 14; // fixed pixel width per candle — stays readable all day
+  var H=260,P={t:10,b:22,l:60,r:18};
+  var TAGW=56, GAP=18;
+  var sl = candles; // show ALL of today's session candles, no slicing
+  var n = sl.length;
+  var cW = n * CANDLE_W;
+  var W = P.l + cW + GAP + TAGW + P.r; // total width grows with candle count
+  var candleAreaR = P.l + cW;
+  svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+  svg.style.width = W + 'px';
+  svg.style.minWidth = W + 'px';
+  svg.style.display = 'block';
+  var cH=H-P.t-P.b;
   var allP=[]; sl.forEach(function(c){allP.push(c.high);allP.push(c.low);}); if(livePrice)allP.push(livePrice);
   var mn=Math.min.apply(null,allP),mx=Math.max.apply(null,allP),pad=(mx-mn)*0.07,lo=mn-pad,hi=mx+pad;
   var py=function(v){return P.t+cH-((v-lo)/(hi-lo))*cH;};
-  var cw=Math.max(5,cW/n-1.5),maxV=Math.max.apply(null,sl.map(function(c){return c.volume;}));
+  var cw=CANDLE_W-1.5,maxV=Math.max.apply(null,sl.map(function(c){return c.volume;}));
   var cls=sl.map(function(c){return c.close;});
   var e9a=cls.map(function(_,i){return i>=8?ema(cls.slice(0,i+1),9):null;});
   var e21a=cls.map(function(_,i){return i>=20?ema(cls.slice(0,i+1),21):null;});
-  var ln=function(arr){return arr.map(function(v,i){return v?(P.l+(i+0.5)*(cW/n))+','+py(v):null;}).filter(Boolean).join(' ');};
+  var ln=function(arr){return arr.map(function(v,i){return v?(P.l+(i+0.5)*CANDLE_W)+','+py(v):null;}).filter(Boolean).join(' ');};
   var h='';
-  [0,1,2,3,4,5].forEach(function(i){var p=lo+(hi-lo)*i/5;h+='<line x1="'+P.l+'" x2="'+(W-P.r)+'" y1="'+py(p)+'" y2="'+py(p)+'" stroke="#1f2937" stroke-width="0.5"/><text x="'+(P.l-4)+'" y="'+(py(p)+4)+'" text-anchor="end" fill="#6b7280" font-size="9">$'+p.toFixed(1)+'</text>';});
-  if(livePrice){h+='<line x1="'+P.l+'" x2="'+(W-P.r)+'" y1="'+py(livePrice)+'" y2="'+py(livePrice)+'" stroke="#f5c518" stroke-width="0.8" stroke-dasharray="5,3"/><rect x="'+(W-P.r+2)+'" y="'+(py(livePrice)-7)+'" width="46" height="13" fill="#f5c518" rx="3"/><text x="'+(W-P.r+25)+'" y="'+(py(livePrice)+3)+'" text-anchor="middle" fill="#000" font-size="8" font-weight="900">$'+livePrice.toFixed(2)+'</text>';}
-  sl.forEach(function(c,i){var x=P.l+i*(cW/n),cx=x+cw/2,bull=c.close>=c.open,col=bull?'#00e5a0':'#ff3d5a';var bT=py(Math.max(c.open,c.close)),bB=py(Math.min(c.open,c.close)),bH=Math.max(1,bB-bT),vH=(c.volume/maxV)*24;h+='<rect x="'+(x+1)+'" y="'+(H-P.b-vH)+'" width="'+(cw-1)+'" height="'+vH+'" fill="'+col+'" opacity="0.18"/><line x1="'+cx+'" x2="'+cx+'" y1="'+py(c.high)+'" y2="'+py(c.low)+'" stroke="'+col+'" stroke-width="1"/><rect x="'+(x+1)+'" y="'+bT+'" width="'+(cw-1)+'" height="'+bH+'" fill="'+col+'" opacity="0.92" rx="0.5"/>';});
+  [0,1,2,3,4,5].forEach(function(i){var p=lo+(hi-lo)*i/5;h+='<line x1="'+P.l+'" x2="'+candleAreaR+'" y1="'+py(p)+'" y2="'+py(p)+'" stroke="#1f2937" stroke-width="0.5"/><text x="'+(P.l-4)+'" y="'+(py(p)+4)+'" text-anchor="end" fill="#6b7280" font-size="10">$'+p.toFixed(1)+'</text>';});
+  if(livePrice){
+    h+='<line x1="'+P.l+'" x2="'+(W-P.r)+'" y1="'+py(livePrice)+'" y2="'+py(livePrice)+'" stroke="#f5c518" stroke-width="0.8" stroke-dasharray="5,3"/>';
+    h+='<rect x="'+(W-P.r-TAGW)+'" y="'+(py(livePrice)-7)+'" width="'+TAGW+'" height="13" fill="#f5c518" rx="3"/><text x="'+(W-P.r-TAGW/2)+'" y="'+(py(livePrice)+3)+'" text-anchor="middle" fill="#000" font-size="9" font-weight="900">$'+livePrice.toFixed(2)+'</text>';
+  }
+  sl.forEach(function(c,i){var x=P.l+i*CANDLE_W,cx=x+cw/2,bull=c.close>=c.open,col=bull?'#00e5a0':'#ff3d5a';var bT=py(Math.max(c.open,c.close)),bB=py(Math.min(c.open,c.close)),bH=Math.max(1,bB-bT),vH=(c.volume/maxV)*24;h+='<rect x="'+(x+1)+'" y="'+(H-P.b-vH)+'" width="'+(cw-1)+'" height="'+vH+'" fill="'+col+'" opacity="0.18"/><line x1="'+cx+'" x2="'+cx+'" y1="'+py(c.high)+'" y2="'+py(c.low)+'" stroke="'+col+'" stroke-width="1"/><rect x="'+(x+1)+'" y="'+bT+'" width="'+(cw-1)+'" height="'+bH+'" fill="'+col+'" opacity="0.92" rx="0.5"/>';});
   if(e9a.some(Boolean))h+='<polyline points="'+ln(e9a)+'" fill="none" stroke="#f5c518" stroke-width="1.3" opacity="0.85"/>';
   if(e21a.some(Boolean))h+='<polyline points="'+ln(e21a)+'" fill="none" stroke="#a78bfa" stroke-width="1.3" opacity="0.85"/>';
-  sl.filter(function(_,i){return i%8===0;}).forEach(function(c,i){var x=P.l+(i*8+0.5)*(cW/n),t=new Date(c.time);h+='<text x="'+x+'" y="'+(H-5)+'" text-anchor="middle" fill="#6b7280" font-size="8">'+t.toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit'})+'</text>';});
+  sl.filter(function(_,i){return i%6===0;}).forEach(function(c,i){var x=P.l+(i*6+0.5)*CANDLE_W,t=new Date(c.time);h+='<text x="'+x+'" y="'+(H-5)+'" text-anchor="middle" fill="#6b7280" font-size="9">'+t.toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit'})+'</text>';});
   svg.innerHTML=h;
-  var RH=60,RP={t:5,b:12,l:60,r:18},rcW=W-RP.l-RP.r,rcH=RH-RP.t-RP.b;
+  var RH=60,RP={t:5,b:12,l:60,r:18};
+  rsvg.setAttribute('viewBox', '0 0 ' + W + ' ' + RH);
+  rsvg.style.width = W + 'px';
+  rsvg.style.minWidth = W + 'px';
+  rsvg.style.display = 'block';
+  var rcH=RH-RP.t-RP.b;
   var rv=sl.map(function(_,i){return rsi(sl.slice(0,i+1).map(function(c){return c.close;}));});
   var rpy=function(v){return RP.t+rcH-(v/100)*rcH;};
-  var rpts=rv.map(function(v,i){return (RP.l+(i+0.5)*(rcW/n))+','+rpy(v);}).join(' ');
+  var rpts=rv.map(function(v,i){return (P.l+(i+0.5)*CANDLE_W)+','+rpy(v);}).join(' ');
   var lr=rv[rv.length-1];
   var rh='';
-  [{v:70,c:'#ff3d5a'},{v:50,c:'#1f2937'},{v:30,c:'#00e5a0'}].forEach(function(item){rh+='<line x1="'+RP.l+'" x2="'+(W-RP.r)+'" y1="'+rpy(item.v)+'" y2="'+rpy(item.v)+'" stroke="'+item.c+'" stroke-width="0.5" stroke-dasharray="4,3"/><text x="'+(RP.l-4)+'" y="'+(rpy(item.v)+3)+'" text-anchor="end" fill="#6b7280" font-size="8">'+item.v+'</text>';});
+  [{v:70,c:'#ff3d5a'},{v:50,c:'#1f2937'},{v:30,c:'#00e5a0'}].forEach(function(item){rh+='<line x1="'+RP.l+'" x2="'+candleAreaR+'" y1="'+rpy(item.v)+'" y2="'+rpy(item.v)+'" stroke="'+item.c+'" stroke-width="0.5" stroke-dasharray="4,3"/><text x="'+(RP.l-4)+'" y="'+(rpy(item.v)+3)+'" text-anchor="end" fill="#6b7280" font-size="9">'+item.v+'</text>';});
   rh+='<polyline points="'+rpts+'" fill="none" stroke="'+(lr>70?'#ff3d5a':lr<30?'#00e5a0':'#38bdf8')+'" stroke-width="1.5"/>';
-  rh+='<text x="'+(W-RP.r)+'" y="'+(RP.t+9)+'" text-anchor="end" fill="#f0f4f8" font-size="9" font-weight="700">RSI '+lr+'</text>';
+  rh+='<text x="'+(candleAreaR)+'" y="'+(RP.t+9)+'" text-anchor="end" fill="#f0f4f8" font-size="10" font-weight="700">RSI '+lr+'</text>';
   rsvg.innerHTML=rh;
 }
 
